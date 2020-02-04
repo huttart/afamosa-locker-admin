@@ -1,0 +1,54 @@
+<h1 mat-dialog-title class="dialog-title">{{data.title}}</h1>
+<div mat-dialog-content class="dialog-content">
+    <!-- <p>{{data.detail}}</p> -->
+    <div class="data" *ngIf="RFID">
+        <span>RFID : </span>
+        <span>{{RFID}}</span>
+    </div>
+
+    <mat-spinner *ngIf="!RFID"></mat-spinner>
+
+    <div class="timeout">
+        <ng-container *ngIf="data.detail == 'sell' && RFID">
+            <mat-form-field>
+                <mat-label>Select a locker size</mat-label>
+                <mat-select [(value)]="locker_size">
+                    <mat-option *ngFor="let item of locker_size_options" [value]="item.size_detail">{{item.size_detail}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </ng-container>
+        <ng-container *ngIf="!RFID">
+            Please scan rfid within {{timeout}} seconds
+        </ng-container>
+
+        <ng-container *ngIf="(data.detail == 'checkout' || data.detail == 'change') && user_locker_data">
+            <div class="data" *ngIf="is_can_checkout">
+                <span>
+                    [lOCKER] <strong>{{user_locker_data.title}}</strong> [zone] <strong>{{user_locker_data.zone_title}}</strong> [size] <strong>{{user_locker_data.locker_size}}</strong>
+                </span>
+            </div>
+        </ng-container>
+
+        <ng-container *ngIf="RFID && !is_can_checkout && (data.detail == 'checkout' || data.detail == 'change')">
+            RFID : {{RFID}} have not registered yet.
+        </ng-container>
+    </div>
+
+</div>
+<div mat-dialog-actions class="dialog-actions">
+    <button mat-button color="primary" (click)="onNoClick()">Cancel</button>
+    <button *ngIf="data.detail == 'sell'" mat-button color="primary" (click)="onYesClick()" [disabled]="!RFID"
+        [class.disabled]="!RFID">
+        Confirm
+    </button>
+    <button *ngIf="data.detail == 'checkout'" mat-button color="primary" (click)="onCheckoutClick()" [disabled]="!RFID || !is_can_checkout"
+        [class.disabled]="!RFID || !is_can_checkout">
+        Checkout
+    </button>
+
+    <button *ngIf="data.detail == 'change'" mat-button color="primary" (click)="onChangeClick()" [disabled]="!RFID || !is_can_checkout"
+        [class.disabled]="!RFID || !is_can_checkout">
+        Change locker
+    </button>
+</div>

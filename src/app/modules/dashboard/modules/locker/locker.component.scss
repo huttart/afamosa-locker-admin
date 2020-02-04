@@ -1,0 +1,94 @@
+@import '../../dashboard.scss';
+
+.main-content-wrapper {
+    padding-top: 120px;
+
+    h2 {
+        padding: 0 50px;
+        font-size: 1.6em;
+        font-weight: 800;
+    }
+}
+.bread-crumb h2 {
+    color: black;
+    margin-top: 30px;
+    font-weight: 800;
+    // font-size: 1.em;
+
+}
+
+.auln {
+    min-height: fit-content;
+    min-width: 200px;
+    .active-device-detail {
+        padding: 10px 0;
+        font-size: 16px;
+        align-items: initial;
+        span {  
+            flex: 1;
+            min-height: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px;
+            background-color: whitesmoke;
+            margin: 2px;
+            border-radius: 10px;
+            line-height: 22px;
+
+            &:nth-child(1) {
+                max-width: fit-content;
+            }
+        }
+    }
+
+    .option {
+        font-size: 0.8em;
+        padding: 5px 10px;
+        background-color: whitesmoke;
+        border-radius: 100px;
+    }
+}
+
+.table-wrapper {
+    margin: 35px;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+
+    table.mat-table {
+        width: 100%;
+    }
+
+    td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type, th.mat-header-cell:first-of-type {
+        padding-top: 17px;
+    }
+
+    span.active-status {
+        padding: 5px 10px;
+        background-color: #2ecd71;
+        display: inline-block;
+        color: white;
+        border-radius: 50px;
+    }
+
+    span {
+        padding: 5px 10px;
+        display: inline-block;
+        border-radius: 50px;
+        background-color: whitesmoke;
+    }
+
+    button {
+        margin-right: 8px;
+        padding: 0 8px;
+        background: whitesmoke;
+    }
+}
+.green {
+    color: #2ecd71;
+}
+.fill-space {
+    flex: 1;
+}

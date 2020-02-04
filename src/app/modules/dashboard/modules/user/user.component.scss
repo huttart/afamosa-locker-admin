@@ -1,0 +1,81 @@
+@import '../../dashboard.scss';
+
+.main-content-wrapper {
+    padding-top: 120px;
+
+    h2 {
+        padding: 0 50px;
+        font-size: 1.6em;
+        font-weight: 800;
+    }
+}
+.bread-crumb h2 {
+    color: black;
+    margin-top: 30px;
+    font-weight: 800;
+    // font-size: 1.em;
+
+}
+
+.aurn {
+    // max-width: 200px;
+    min-width: 200px;
+    min-height: 100px;
+
+    .active-device-detail {
+        padding-left: 0;
+        padding-right: 0;
+        font-size: 1em;
+        align-items: initial;
+        justify-content: initial;
+        line-height: 1.2em;
+        h3 {
+            color: #666;
+            margin-bottom: 5px;
+        }
+        span {
+            text-align: left;
+            font-weight: 500;
+            margin-bottom: 5px;
+            
+            &:nth-child(1) {
+                font-size: 1.5em;
+            }
+
+            &:nth-child(3) {
+                font-size: 1.3em;
+            }
+        }
+        .msg {
+            font-size: 1em !important;
+            color: #555;
+            font-weight: normal;
+        }
+        &.column {
+            flex-direction: column;
+            // text-align: left;
+            padding-bottom: 0;
+        }
+    }
+    h3 {
+        display: flex;
+        align-items: center;
+    }
+    img {
+        max-width: 40px;
+        margin-right: 10px;
+        // border-radius: 5px;
+    }
+}
+
+google-chart {
+    margin: 0;
+    width: 100%;
+    // height: 100%;
+}
+
+.graph {
+    max-width: 100%;
+    max-height: initial;
+    // height: 100%;
+}

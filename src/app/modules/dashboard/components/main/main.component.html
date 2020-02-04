@@ -1,0 +1,168 @@
+<div class="bread-crumb">
+    Dashboard
+</div>
+<div class="main-content-wrapper">
+    <div class="row">
+        <div class="active-device">
+            <h3 class="real-time">
+                <mat-icon>
+                    person
+                </mat-icon>
+                Active users right now
+            </h3>
+
+            <div class="active-device-detail">
+                <span>
+                    <mat-spinner *ngIf="!first_three_card" strokeWidth="3.8" diameter='40'></mat-spinner>
+                    <ng-container *ngIf="first_three_card">
+                        {{first_three_card.active_users_right_now}}
+                    </ng-container>
+                </span>
+            </div>
+
+            <div class="active-device-action align-right">
+                <button mat-button [routerLink]="['user']">User dashboard <mat-icon>
+                        keyboard_arrow_right</mat-icon></button>
+            </div>
+        </div>
+
+        <div class="active-device">
+            <h3 class="real-time">
+                <mat-icon>store</mat-icon>
+                Active lockers right now
+            </h3>
+
+            <div class="active-device-detail">
+                <span>
+                    <mat-spinner *ngIf="!first_three_card" strokeWidth="3.8" diameter='40'></mat-spinner>
+                    <ng-container *ngIf="first_three_card">
+                        {{first_three_card.active_lockers_right_now}}
+                    </ng-container>
+                </span>
+            </div>
+
+            <div class="active-device-action align-right">
+                <button mat-button [routerLink]="['locker']">Locker dashboard <mat-icon>
+                        keyboard_arrow_right</mat-icon></button>
+            </div>
+        </div>
+
+        <div class="active-device">
+            <h3 >
+                <mat-icon>store</mat-icon> 
+                Avalible lockers
+            </h3>
+
+            <div class="active-device-detail">
+                <span>
+                    <mat-spinner *ngIf="!first_three_card" strokeWidth="3.8" diameter='40'></mat-spinner>
+                    <ng-container *ngIf="first_three_card">
+                        {{first_three_card.avalible_lockers}}/{{first_three_card.total_lockers}}
+                    </ng-container>
+                </span>
+            </div>
+
+            <div class="active-device-action align-right">
+                <button mat-button [routerLink]="['locker']">Locker dashboard<mat-icon>
+                        keyboard_arrow_right</mat-icon></button>
+            </div>
+        </div>
+
+        <div class="active-device">
+            <h3>
+                <mat-icon>people</mat-icon>    
+                Total users
+            </h3>
+
+            <div class="active-device-detail">
+                <span>
+                    <mat-spinner *ngIf="!total_users" strokeWidth="3.8" diameter='40'></mat-spinner>
+                    <ng-container *ngIf="total_users">
+                        {{total_users.total_users}}
+                    </ng-container>
+                </span>
+            </div>
+
+            <div class="active-device-action">
+                <button mat-button [matMenuTriggerFor]="menu1">{{range_total_users_active_option}} <mat-icon>
+                        arrow_drop_down</mat-icon></button>
+                <mat-menu #menu1="matMenu">
+                    <button mat-menu-item *ngFor="let item of date_rang_options"
+                        (click)="getTotalUser(item)">{{item.text}}</button>
+                </mat-menu>
+            </div>
+        </div>
+
+        <div class="active-device ubls">
+            <h3>
+                <mat-icon>account_circle</mat-icon>    
+                Users by locker size</h3>
+
+            <div class="active-device-detail" [class.active]="range_users_by_locker_active_option">
+                <mat-spinner *ngIf="!users_by_locker" strokeWidth="3.8" diameter='40'></mat-spinner>
+                <ng-container *ngIf="users_by_locker">
+
+                    <div class="locker-size" *ngFor="let item of users_by_locker">
+                        <span>{{item.locker_size}}</span>
+                        <span>{{item.count}}</span>
+                    </div>
+
+                </ng-container>
+
+            </div>
+
+            <div class="active-device-action">
+                <button mat-button [matMenuTriggerFor]="menu2">{{range_users_by_locker_active_option}} <mat-icon>
+                        arrow_drop_down</mat-icon></button>
+                <mat-menu #menu2="matMenu">
+                    <button mat-menu-item *ngFor="let item of date_rang_options"
+                        (click)="getUsersByLockerSize(item)">{{item.text}}</button>
+                </mat-menu>
+            </div>
+        </div>
+
+        <!-- <div class="active-device">
+            <h3>Users by zone</h3>
+
+            <div class="active-device-detail">
+                <span>
+                    37
+                </span>
+            </div>
+
+            <div class="active-device-action">
+                <button mat-button [matMenuTriggerFor]="menu">Last 7 days <mat-icon>arrow_drop_down</mat-icon></button>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item>Last 7 days</button>
+                    <button mat-menu-item>Last 14 days</button>
+                    <button mat-menu-item>Last 30 days</button>
+                </mat-menu>
+            </div>
+        </div> -->
+
+
+        <div class="active-device ubl">
+            <h3>
+                <mat-icon>language</mat-icon>
+                Users by language
+            </h3>
+            <div class="active-device-detail" [class.active]="user_by_lang_active_option">
+                <mat-spinner *ngIf="!user_by_lang" strokeWidth="3.8" diameter='40'></mat-spinner>
+                <ng-container *ngIf="user_by_lang">
+                    <google-chart type="PieChart" [data]="user_by_lang" width="400" height="400">
+                    </google-chart>
+                </ng-container>
+            </div>
+
+            <div class="active-device-action">
+                <button mat-button [matMenuTriggerFor]="menu3">{{user_by_lang_active_option}} <mat-icon>arrow_drop_down
+                    </mat-icon></button>
+                <mat-menu #menu3="matMenu">
+                    <button mat-menu-item *ngFor="let item of date_rang_options"
+                        (click)="getUsersByLang(item)">{{item.text}}</button>
+                </mat-menu>
+            </div>
+        </div>
+
+    </div>
+</div>

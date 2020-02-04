@@ -1,0 +1,47 @@
+/* You can add global styles to this file, and also import other style files */
+@import './assets/css/reset.css';
+@import './assets/css/styles.css';
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;background-color: #f9f9fc; }
+.img-responsive {
+    max-width: 100%;
+    height: auto;
+}
+
+.mat-progress-spinner circle, .mat-spinner circle {
+    // stroke: rgb(63, 188, 253);
+    stroke: #3b9fff;
+}
+.mat-select-panel .mat-optgroup-label, .mat-select-panel .mat-option {
+    font-size: 20px !important;
+}
+.mat-snack-bar-container.error {
+    color: red;
+}
+.mat-snack-bar-container {
+    color: black;
+    background: white;
+}
+.mat-simple-snackbar {
+    font-size: 1.3em;
+    justify-content: center !important;
+}
+
+
+
+.bread-crumb {
+    padding: 50px;
+    padding-bottom: 150px;
+    background-color: #0061f2;
+    // background-image: linear-gradient(135deg,#0061f2 0,rgba(105,0,199,.8) 100%);
+    background-image: linear-gradient(135deg, #a5daf8 0, #0061f2 100%);
+    color: white;
+    font-size: 2em;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
