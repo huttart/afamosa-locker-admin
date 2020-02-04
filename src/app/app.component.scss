@@ -12,7 +12,7 @@ div.main-content {
 }
 #notification {
     padding: 4%;
-    border-radius: 5px;
+    border-radius: 45px;
     background-color: white;
     font-size: 1.7em;
     color: #474747;
@@ -67,6 +67,7 @@ div.main-content {
     justify-content: center;
     align-items: center;
     background: rgba(0, 0, 0, 0.33);
+    z-index: 200;
   }
 
 
