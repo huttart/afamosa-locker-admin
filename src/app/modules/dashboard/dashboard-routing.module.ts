@@ -21,6 +21,14 @@ const routes: Routes = [
       {
         path:'locker',
         loadChildren: './modules/locker/locker.module#LockerModule'
+      },
+      {
+        path:'add-locker',
+        loadChildren: './modules/add-locker/add-locker.module#AddLockerModule'
+      },
+      {
+        path:'locker/:lockerID',
+        loadChildren: './modules/locker-detail/locker-detail.module#LockerDetailModule'
       }
     ]
   }

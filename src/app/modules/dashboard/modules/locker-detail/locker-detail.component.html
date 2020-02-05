@@ -1,0 +1,139 @@
+<div class="bread-crumb">
+    <button mat-icon-button [routerLink]="['/dashboard']">
+        <mat-icon>
+            arrow_back</mat-icon>
+    </button>
+    <span class="" [routerLink]="['/dashboard']">Dashboard</span>
+    <span [routerLink]="['/dashboard','locker']">Locker dashboard</span>
+    <span class="active">Locker Detail</span>
+</div>
+
+<div class="main-content-wrapper">
+    <div class="l">
+        <div class="title">
+            <mat-icon>
+                timeline
+            </mat-icon>
+
+            Usage data
+        </div>
+        <div class="log-wrp">
+            <ng-container *ngFor="let item of logs">
+                <div class="log">
+                    <div class="who">
+                        <mat-icon>
+                            account_circle
+                        </mat-icon>
+
+                        <span>{{item.user_id}}</span>
+                        <span class="fill"></span>
+
+                        <div class="when">
+                            {{item.timestamp | datePipe}}
+                        </div>
+                    </div>
+                    <div class="what">
+                        {{item.detail}}
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+
+    <div class="r">
+        <div class="row">
+            <div class="card sd" *ngIf="locker">
+                <div class="title">
+                    <mat-icon>
+                        room
+                    </mat-icon>
+                    Zone
+                </div>
+                <div class="card-content">
+                    <h1>{{locker.zone_title}}</h1>
+                </div>
+            </div>
+            <div class="card sd" *ngIf="locker">
+                <div class="title">
+                    <mat-icon>
+                        info
+                    </mat-icon>
+                    Title
+                </div>
+                <div class="card-content">
+                    <h1>{{locker.title}}</h1>
+                </div>
+            </div>
+
+            <div class="card sd" *ngIf="locker">
+                <div class="title">
+                    <mat-icon>
+                        info
+                    </mat-icon>
+                    Size
+                </div>
+                <div class="card-content">
+                    <h1>{{locker.locker_size}}</h1>
+                </div>
+            </div>
+
+            <div class="card sd" *ngIf="locker">
+                <div class="title">
+                    <mat-icon>
+                        info
+                    </mat-icon>
+                    Open status
+                </div>
+                <div class="card-content">
+                    <h1>
+                        <ng-container *ngIf="locker.status == 1">
+                            <span>Opening</span>
+                        </ng-container>
+                        <ng-container *ngIf="locker.status == 0">
+                            <span>Close</span>
+                        </ng-container>
+                    </h1>
+                </div>
+            </div>
+
+            <div class="card sd" *ngIf="locker">
+                <div class="title">
+                    <mat-icon>
+                        info
+                    </mat-icon>
+                    Status
+                </div>
+                <div class="card-content">
+                    <h1>
+                        <ng-container *ngIf="locker.active == 1">
+                            <span>Being used</span>
+                        </ng-container>
+                        <ng-container *ngIf="locker.active == 0">
+                            <span class="active-status">Ready to use</span>
+                        </ng-container>
+                    </h1>
+                </div>
+            </div>
+
+            <div class="card sd" *ngIf="locker">
+                <div class="title">
+                    <mat-icon>
+                        info
+                    </mat-icon>
+                    Availability
+                </div>
+                <div class="card-content">
+                    <h1>
+                        <ng-container *ngIf="locker.can_use == 1">
+                            <span >Available</span>
+                        </ng-container>
+                        <ng-container *ngIf="locker.can_use == 0">
+                            <span>Disabled</span>
+                        </ng-container>    
+                    </h1>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

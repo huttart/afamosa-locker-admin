@@ -17,6 +17,10 @@ export class LockerService {
     return this.http.get(this.api_url + 'getLockerSizeOptions').toPromise();
   }
 
+  getLockerZones() {
+    return this.http.get(this.api_url + 'getLockerZones').toPromise();
+  }
+
   activateLockerByRfid(rfid) {
     return this.http.get(this.api_url + 'getLockerSizeOptions', {
       params : {
@@ -30,6 +34,30 @@ export class LockerService {
       params: {
         rfid: rfid,
         locker_id: locker_id
+      }
+    }).toPromise();
+  }
+
+  getLogsByLockerID (locker_id) {
+    return this.http.get(this.api_url + 'getLogsByLockerID', {
+      params: {
+        locker_id: locker_id
+      }
+    }).toPromise();
+  }
+
+  getLockerByID (locker_id) {
+    return this.http.get(this.api_url + 'getLockerByID', {
+      params: {
+        locker_id: locker_id
+      }
+    }).toPromise();
+  }
+  add (zone_id, title) {
+    return this.http.get(this.api_url + 'add', {
+      params: {
+        zone_id: zone_id,
+        title: title
       }
     }).toPromise();
   }

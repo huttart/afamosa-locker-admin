@@ -32,16 +32,58 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;background-c
 
 
 .bread-crumb {
-    padding: 50px;
-    padding-bottom: 150px;
-    background-color: #0061f2;
-    // background-image: linear-gradient(135deg,#0061f2 0,rgba(105,0,199,.8) 100%);
-    background-image: linear-gradient(135deg, #a5daf8 0, #0061f2 100%);
-    color: white;
-    font-size: 2em;
-    position: absolute;
+    padding: 5px 15px;
+    display: flex;
+    align-items: center;
+    // font-weight: 500;
+    border-bottom: 1px solid #d2d2d2;
+    font-size: 0.9em;
+    color: #888;
+
+    position: fixed;
     top: 60px;
-    left: 0;
     right: 0;
-    z-index: 1;
+    left: 0;
+
+    background: rgba(255, 255, 255, 0.99);
+    z-index: 1000;
+    button {
+        margin-right: 10px;
+    }
+    & > span {
+        display: flex;
+        height: 40px;
+        position: relative;
+        align-items: center;
+        margin-right: 20px;
+        cursor: pointer;
+        outline: none;
+    }
+    span.active {
+        color: black;
+    }
+    span.active::before {
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+        bottom: -5px;
+        content: "";
+        display: block;
+        height: 3px;
+        left: 0;
+        margin: 0;
+        position: absolute;
+        right: 0;
+        background: #2ecd71;
+    }
+    // padding-bottom: 150px;
+    // background-color: #0061f2;
+    // background-image: linear-gradient(135deg,#0061f2 0,rgba(105,0,199,.8) 100%);
+    // background-image: linear-gradient(135deg, #a5daf8 0, #0061f2 100%);
+    // color: white;
+    // font-size: 2em;
+    // position: absolute;
+    // top: 60px;
+    // left: 0;
+    // right: 0;
+    // z-index: 1;
 }

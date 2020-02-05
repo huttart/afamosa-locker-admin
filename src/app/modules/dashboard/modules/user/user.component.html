@@ -1,13 +1,14 @@
 <div class="bread-crumb">
-    <!-- <button mat-icon-button [routerLink]="['/dashboard']"> <mat-icon>
-        keyboard_arrow_left</mat-icon>
-    </button> -->
-    User dashboard
-
-    <h2>Active users right now</h2>
+    <button mat-icon-button [routerLink]="['/dashboard']"> <mat-icon>
+        arrow_back</mat-icon>
+    </button>
+    <span class="" [routerLink]="['/dashboard']" >Dashboard</span>
+    <span class="active">User dashboard</span>
 
 </div>
+
 <div class="main-content-wrapper">
+    <h2>Active users right now</h2>
     <div class="row">
         <div class="active-device aurn" *ngFor="let item of active_users">
             <h3> <img src="assets/lang-{{item.lang}}.png" alt=""> {{item.rfid}}</h3>

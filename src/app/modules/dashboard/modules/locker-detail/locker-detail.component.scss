@@ -1,0 +1,91 @@
+.main-content-wrapper {
+    padding: 20px;
+    display: flex;
+    padding-top: 140px;
+    .l {
+        width: 400px;
+        min-height: 600px;
+        box-shadow: 0 1px 3px 0 rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 2px 1px -1px rgba(0,0,0,.12);
+        background-color: white;
+        padding: 25px;
+        border-radius: 30px;
+        margin: 20px;
+
+        .title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            .mat-icon {
+                margin-right: 10px;
+            }
+        }
+
+        .log-wrp {
+            .log {
+                margin: 15px 0;
+                padding: 15px 20px;
+                background-color: whitesmoke;
+                border-radius: 50px;
+                font-size: 0.9em;
+                color: #444;
+                .who {
+                    display: flex;
+                    align-items: center;
+                    .mat-icon {
+                        margin-right: 8px;
+                    }
+                    .fill {
+                        flex: 1;
+                    }
+                    .when {
+
+                    }
+                }
+                .what {
+                    padding: 8px;
+                    line-height: 18px;
+                }
+            }
+        }
+    }
+    .r {
+        flex: 1;
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .card {
+            box-shadow: 0 1px 3px 0 rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 2px 1px -1px rgba(0,0,0,.12);
+            background-color: white;
+            padding: 25px;
+            border-radius: 30px;
+            margin: 20px;
+            flex: 1;
+            min-width: 350px;
+            .title {
+                display: flex;
+                align-items: center;
+                margin-bottom: 10px;
+                .mat-icon {
+                    margin-right: 10px;
+                }
+            }
+
+            &.sd {
+                // max-width: fit-content;
+                min-width: 180px;
+            }
+
+            h1 {
+                text-align: center;
+                font-size: 25px;
+                white-space: nowrap;
+                // font-weight: bold;
+            }
+
+            .card-content {
+                padding: 15px 20px;
+            }
+        }
+    }
+}

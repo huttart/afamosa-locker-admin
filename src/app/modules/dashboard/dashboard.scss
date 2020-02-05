@@ -1,5 +1,5 @@
 .main-content-wrapper {
-    padding: 100px 0 50px 0px;
+    padding: 140px 0 50px 0px;
 }
 .row {
     display: flex;
@@ -7,8 +7,9 @@
     flex-wrap: wrap;
 }
 .active-device {
-    padding: 15px;
-    border-radius: 8px;
+    padding: 25px;
+    border-radius: 30px;
+    // border-radius: 8px;
     background: #ededed;
     margin: 15px;
     min-width: 300px;
@@ -37,7 +38,7 @@
 
         &.real-time {
             .mat-icon {
-                color: #2ecd71;
+                color: #00a850;
             }
         }
     }
