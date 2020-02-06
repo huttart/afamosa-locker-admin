@@ -1,8 +1,9 @@
 <div class="bread-crumb">
-    <button mat-icon-button [routerLink]="['/dashboard']"> <mat-icon>
-        arrow_back</mat-icon>
+    <button mat-icon-button [routerLink]="['/dashboard']">
+        <mat-icon>
+            arrow_back</mat-icon>
     </button>
-    <span class="" [routerLink]="['/dashboard']" >Dashboard</span>
+    <span class="" [routerLink]="['/dashboard']">Dashboard</span>
     <span class="active">User dashboard</span>
 
 </div>
@@ -11,24 +12,30 @@
     <h2>Active users right now</h2>
     <div class="row">
         <div class="active-device aurn" *ngFor="let item of active_users">
-            <h3> <img src="assets/lang-{{item.lang}}.png" alt=""> {{item.rfid}}</h3>
+            <h3>
+                <mat-icon>account_circle</mat-icon>
+                <span>{{item.user_id}}</span>
+                <img src="assets/lang-{{item.lang}}.png" alt=""> 
+            </h3>
 
             <div class="active-device-detail column">
                 <!-- <h3>locker number</h3> -->
                 <span *ngIf="item.title">
                     {{item.title}}
                 </span>
-                
+
                 <span *ngIf="!item.title" class="msg">Have not opened any locker yet.</span>
 
                 <!-- <h3>registered at</h3> -->
-                <span>
-                    {{item.timestamp}}
-                </span>
+              
 
                 <!-- <h3>size</h3> -->
                 <span>
                     {{item.locker_size}}
+                </span>
+
+                <span>
+                    {{item.timestamp | datePipe}}
                 </span>
             </div>
 
@@ -45,12 +52,14 @@
             </h3>
 
             <div class="active-device-detail">
-                <google-chart type="ColumnChart" [data]="user_report_data" *ngIf="user_report_data" [options]="options" [columnNames]="columnNames">
+                <google-chart type="ColumnChart" [data]="user_report_data" *ngIf="user_report_data" [options]="options"
+                    [columnNames]="columnNames">
                 </google-chart>
             </div>
 
             <div class="active-device-action">
-                <button mat-button [matMenuTriggerFor]="menu3">{{user_report_active_filter.text}} <mat-icon>arrow_drop_down
+                <button mat-button [matMenuTriggerFor]="menu3">{{user_report_active_filter.text}} <mat-icon>
+                        arrow_drop_down
                     </mat-icon></button>
                 <mat-menu #menu3="matMenu">
                     <button mat-menu-item *ngFor="let item of user_report_filter_options"

@@ -53,11 +53,36 @@ export class LockerService {
       }
     }).toPromise();
   }
+
   add (zone_id, title) {
     return this.http.get(this.api_url + 'add', {
       params: {
         zone_id: zone_id,
         title: title
+      }
+    }).toPromise();
+  }
+
+  remove (id) {
+    return this.http.get(this.api_url + 'remove', {
+      params: {
+        id:id
+      }
+    }).toPromise();
+  }
+
+  disable (id) {
+    return this.http.get(this.api_url + 'disable', {
+      params: {
+        id:id
+      }
+    }).toPromise();
+  }
+
+  enable (id) {
+    return this.http.get(this.api_url + 'enable', {
+      params: {
+        id:id
       }
     }).toPromise();
   }

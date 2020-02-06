@@ -8,7 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { GoogleChartsModule } from 'angular-google-charts';
-
+import { DatePipeModule } from 'src/app/pipes/date-pipe/date-pipe.module';
 @NgModule({
   declarations: [UserComponent],
   imports: [
@@ -18,7 +18,8 @@ import { GoogleChartsModule } from 'angular-google-charts';
     MatButtonModule,
     MatIconModule,
     MatProgressSpinnerModule,
-    GoogleChartsModule
+    GoogleChartsModule,
+    DatePipeModule
   ]
 })
 export class UserModule { }

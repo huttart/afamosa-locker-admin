@@ -1,5 +1,5 @@
 <div class="bread-crumb">
-    <button mat-icon-button [routerLink]="['/dashboard']">
+    <button mat-icon-button [routerLink]="['/dashboard','locker']">
         <mat-icon>
             arrow_back</mat-icon>
     </button>
@@ -56,7 +56,7 @@
             <div class="card sd" *ngIf="locker">
                 <div class="title">
                     <mat-icon>
-                        info
+                        apartment
                     </mat-icon>
                     Title
                 </div>
@@ -68,7 +68,7 @@
             <div class="card sd" *ngIf="locker">
                 <div class="title">
                     <mat-icon>
-                        info
+                        bubble_chart
                     </mat-icon>
                     Size
                 </div>
@@ -80,7 +80,7 @@
             <div class="card sd" *ngIf="locker">
                 <div class="title">
                     <mat-icon>
-                        info
+                        lock_open
                     </mat-icon>
                     Open status
                 </div>
@@ -99,7 +99,7 @@
             <div class="card sd" *ngIf="locker">
                 <div class="title">
                     <mat-icon>
-                        info
+                        swap_horiz
                     </mat-icon>
                     Status
                 </div>
@@ -118,7 +118,7 @@
             <div class="card sd" *ngIf="locker">
                 <div class="title">
                     <mat-icon>
-                        info
+                        done_all
                     </mat-icon>
                     Availability
                 </div>

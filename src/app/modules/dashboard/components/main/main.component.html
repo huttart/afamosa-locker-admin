@@ -1,6 +1,10 @@
-<!-- <div class="bread-crumb">
-    Dashboard
-</div> -->
+<div class="bread-crumb">
+    <button mat-icon-button [routerLink]="['/home']">
+        <mat-icon>
+            arrow_back</mat-icon>
+    </button>
+    <span class="active" >Dashboard</span>
+</div>
 <div class="main-content-wrapper">
     <div class="row">
         <div class="active-device">
@@ -143,7 +147,7 @@
 
         <div class="active-device ubl">
             <h3>
-                <mat-icon>language</mat-icon>
+                <mat-icon>public</mat-icon>
                 Users by language
             </h3>
             <div class="active-device-detail" [class.active]="user_by_lang_active_option">

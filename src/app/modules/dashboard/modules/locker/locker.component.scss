@@ -17,7 +17,8 @@
 
 .auln {
     min-height: fit-content;
-    min-width: 200px;
+    min-width: 300px;
+    max-width: 350px;
     .active-device-detail {
         padding: 10px 0;
         font-size: 16px;
@@ -61,8 +62,7 @@
         position: absolute;
         top: 15px;
         right: 15px;
-        background-color: #fbcd4b;
-        color: white;
+        color: #00a850;
     }
 
     table.mat-table {
@@ -73,12 +73,25 @@
         padding-top: 17px;
     }
 
+    tr.mat-footer-row, tr.mat-row {
+        height: 70px;
+    }  
+    td.mat-cell:last-of-type, td.mat-footer-cell:last-of-type, th.mat-header-cell:last-of-type {
+        padding-top: 14px;
+    }
+
     span.active-status {
-        padding: 12px;
         background-color: #00a850;
-        display: inline-block;
         color: white;
-        border-radius: 50px;
+    }
+
+    span.using {
+        background-color: #FFC107;
+        color: white;
+    }
+
+    span.open {
+        color: #00a850;
     }
 
     span {
@@ -100,4 +113,7 @@
 }
 .fill-space {
     flex: 1;
+}
+.c-red {
+    color: red;
 }

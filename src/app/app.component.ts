@@ -28,10 +28,10 @@ export class AppComponent {
       this.version = this._ElectronService.version;
       this.update_avalible = this._ElectronService.update_avalible;
       this.update_downloaded = this._ElectronService.update_downloaded;
-      console.log(this.update_downloaded);
-      console.log(this.update_avalible);
+      // console.log(this.update_downloaded);
+      // console.log(this.update_avalible);
       if (limit == 0 && this.update_avalible == false) {
-        console.log('clearinterval 1');
+        // console.log('clearinterval 1');
         clearInterval(this.interval_sub);
       }
       if (this.update_downloaded) {

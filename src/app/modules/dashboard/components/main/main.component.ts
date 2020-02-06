@@ -14,6 +14,8 @@ export class MainComponent implements OnInit {
   range_total_users = 7;
   range_total_users_active_option;
   date_rang_options = [
+    { text: 'Today', value: 0 },
+    // { text: 'Yesterday', value: 2},
     { text: 'Last 7 days', value: 7 },
     { text: 'Last 14 days', value: 14 },
     { text: 'Last 30 days', value: 30 }
@@ -27,7 +29,7 @@ export class MainComponent implements OnInit {
   user_by_lang;
   user_by_lang_active_option;
 
-
+  auto_refresh;
 
   data = [
     ['Firefox', 45.0],
@@ -42,8 +44,22 @@ export class MainComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.myInit();
+    this.auto_refresh = setInterval(() => {
+      this.myInit();
+    }, 20000);
+  }
+
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    if (this.auto_refresh) {
+      clearInterval(this.auto_refresh);
+    }
+  }
+
+  myInit() {
     this._LockerService.getLockerSizeOptions().then(res => {
-      // console.log(res);
       this.locker_size_options = res;
     });
     this.getStaticsForDashboardFirstThreeCard();
