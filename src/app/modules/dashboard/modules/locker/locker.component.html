@@ -124,6 +124,18 @@
             </ng-container>
 
             <ng-container matColumnDef="7">
+                <th mat-header-cell *matHeaderCellDef> Empty </th>
+                <td mat-cell *matCellDef="let element">
+                    <ng-container *ngIf="element.isEmpty == 1">
+                        <span >Empty</span>
+                    </ng-container>
+                    <ng-container *ngIf="element.isEmpty == 0">
+                        <span>Not empty</span>
+                    </ng-container>    
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="8">
                 <th mat-header-cell *matHeaderCellDef> Actions </th>
                 <td mat-cell *matCellDef="let element">
                     <ng-container *ngIf="element.can_use == 1">

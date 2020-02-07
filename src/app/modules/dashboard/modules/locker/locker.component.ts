@@ -15,8 +15,10 @@ export class LockerComponent implements OnInit {
   active_lockers;
   lockers_data;
 
-  displayedColumns: string[] = ['1', '2', '3', '4', '5', '6', '7'];
+  displayedColumns: string[] = ['1', '2', '3', '4', '5', '6', '7', '8'];
   dataSource;
+
+  interval_sub;
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
@@ -35,6 +37,19 @@ export class LockerComponent implements OnInit {
     this.getActiveLockerData();
     this.getAllLockerData();
 
+    this.interval_sub = setInterval(() => {
+      this.getActiveLockerData();
+      this.getAllLockerData();
+    }, 5000);
+
+  }
+
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    if (this.interval_sub) {
+      clearInterval(this.interval_sub);
+    }
   }
 
   getActiveLockerData() {

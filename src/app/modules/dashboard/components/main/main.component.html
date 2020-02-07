@@ -152,7 +152,7 @@
             </h3>
             <div class="active-device-detail" [class.active]="user_by_lang_active_option">
                 <mat-spinner *ngIf="!user_by_lang" strokeWidth="3.8" diameter='40'></mat-spinner>
-                <ng-container *ngIf="user_by_lang">
+                <ng-container *ngIf="user_by_lang && user_by_lang.length > 0">
                     <google-chart type="PieChart" [data]="user_by_lang" width="400" height="400">
                     </google-chart>
                 </ng-container>
