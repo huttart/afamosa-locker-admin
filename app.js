@@ -15,12 +15,13 @@ process.on('uncaughtException', function (err) {
 
 function initWindow() {
   appWindow = new BrowserWindow({
-    width: 1000,
-    height: 800,
+    // width: 1000,
+    // height: 800,
     webPreferences: {
       nodeIntegration: true
     }
   })
+  appWindow.maximize()
   
   appWindow.setMenu(null);
 
@@ -40,7 +41,7 @@ function initWindow() {
   );
 
   // Initialize the DevTools.
-  appWindow.webContents.openDevTools()
+  // appWindow.webContents.openDevTools()
 
   appWindow.on('closed', function () {
     appWindow = null;

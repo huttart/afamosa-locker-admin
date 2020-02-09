@@ -35,6 +35,9 @@
                     <div class="what">
                         {{item.detail}}
                     </div>
+                    <div class="what" *ngIf="item.url">
+                        <img [src]="item.url" alt="" class="img-responsive">
+                    </div>
                 </div>
             </ng-container>
         </div>
