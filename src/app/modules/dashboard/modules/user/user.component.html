@@ -52,7 +52,7 @@
             </h3>
 
             <div class="active-device-detail">
-                <google-chart type="ColumnChart" [data]="user_report_data" *ngIf="user_report_data" [options]="options"
+                <google-chart type="ColumnChart" [data]="user_report_data" *ngIf="user_report_data && user_report_data.length > 0" [options]="options"
                     [columnNames]="columnNames">
                 </google-chart>
             </div>

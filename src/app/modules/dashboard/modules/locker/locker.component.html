@@ -1,8 +1,9 @@
 <div class="bread-crumb">
-    <button mat-icon-button [routerLink]="['/dashboard']"> <mat-icon>
-        arrow_back</mat-icon>
+    <button mat-icon-button [routerLink]="['/dashboard']">
+        <mat-icon>
+            arrow_back</mat-icon>
     </button>
-    <span class="" [routerLink]="['/dashboard']" >Dashboard</span>
+    <span class="" [routerLink]="['/dashboard']">Dashboard</span>
     <span class="active">Locker dashboard</span>
 
 </div>
@@ -54,10 +55,11 @@
     <h2>Lockers</h2>
 
 
-    <div class="table-wrapper" >
-        <button mat-raised-button class="add-btn" [routerLink]="['/','dashboard','add-locker']" routerLinkActive="router-link-active" >
-            <mat-icon>add_location</mat-icon>
-            ADD LOCKER
+    <div class="table-wrapper">
+        <button mat-raised-button class="add-btn" [routerLink]="['/','dashboard','add-locker']"
+            routerLinkActive="router-link-active">
+            <mat-icon>add</mat-icon>
+            LOCKER
         </button>
         <table mat-table [dataSource]="dataSource">
             <!-- Position Column -->
@@ -81,7 +83,7 @@
             <!-- Symbol Column -->
             <ng-container matColumnDef="4">
                 <th mat-header-cell *matHeaderCellDef> Open </th>
-                <td mat-cell *matCellDef="let element"> 
+                <td mat-cell *matCellDef="let element">
                     <ng-container *ngIf="element.status == 1 && element.can_use == 1">
                         <span class="open">opening</span>
                     </ng-container>
@@ -89,7 +91,7 @@
                         <span>close</span>
                     </ng-container>
                     <ng-container *ngIf="element.can_use == 0">
-                        <span >disabled</span>
+                        <span>disabled</span>
                     </ng-container>
                 </td>
             </ng-container>
@@ -97,15 +99,15 @@
             <!-- Symbol Column -->
             <ng-container matColumnDef="5">
                 <th mat-header-cell *matHeaderCellDef> Status </th>
-                <td mat-cell *matCellDef="let element"> 
+                <td mat-cell *matCellDef="let element">
                     <ng-container *ngIf="element.active == 1 && element.can_use == 1">
-                        <span class="using">being used</span> 
+                        <span class="using">being used</span>
                     </ng-container>
                     <ng-container *ngIf="element.active == 0 && element.can_use == 1">
                         <span class="active-status">ready to use</span>
-                    </ng-container>    
+                    </ng-container>
                     <ng-container *ngIf="element.can_use == 0">
-                        <span >disabled</span>
+                        <span>disabled</span>
                     </ng-container>
                 </td>
             </ng-container>
@@ -115,11 +117,11 @@
                 <th mat-header-cell *matHeaderCellDef> Availability </th>
                 <td mat-cell *matCellDef="let element">
                     <ng-container *ngIf="element.can_use == 1">
-                        <span >available</span>
+                        <span>available</span>
                     </ng-container>
                     <ng-container *ngIf="element.can_use == 0">
                         <span>disabled</span>
-                    </ng-container>    
+                    </ng-container>
                 </td>
             </ng-container>
 
@@ -127,11 +129,11 @@
                 <th mat-header-cell *matHeaderCellDef> Empty </th>
                 <td mat-cell *matCellDef="let element">
                     <ng-container *ngIf="element.isEmpty == 1">
-                        <span >Empty</span>
+                        <span>Empty</span>
                     </ng-container>
                     <ng-container *ngIf="element.isEmpty == 0">
                         <span>Not empty</span>
-                    </ng-container>    
+                    </ng-container>
                 </td>
             </ng-container>
 
@@ -139,14 +141,23 @@
                 <th mat-header-cell *matHeaderCellDef> Actions </th>
                 <td mat-cell *matCellDef="let element">
                     <ng-container *ngIf="element.can_use == 1">
-                        <button mat-raised-button (click)="disableLocker(element)"> <mat-icon>pause_circle_outline</mat-icon> disable</button>
+                        <button mat-raised-button (click)="disableLocker(element)">
+                            <mat-icon>pause_circle_outline</mat-icon> disable
+                        </button>
                     </ng-container>
                     <ng-container *ngIf="element.can_use == 0">
-                        <button mat-raised-button (click)="enableLocker(element)" > <mat-icon>play_circle_outline</mat-icon> enable</button>
-                    </ng-container>    
+                        <button mat-raised-button (click)="enableLocker(element)">
+                            <mat-icon>play_circle_outline</mat-icon> enable
+                        </button>
+                    </ng-container>
 
-                    <button mat-raised-button [routerLink]="['/dashboard','locker',element.id]" routerLinkActive="router-link-active" > <mat-icon>timeline</mat-icon> view logs</button>
-                    <button (click)="removeLocker(element)" class="c-red" mat-raised-button  > <mat-icon>remove_circle</mat-icon> delete</button>
+                    <button mat-raised-button [routerLink]="['/dashboard','locker',element.id]"
+                        routerLinkActive="router-link-active">
+                        <mat-icon>timeline</mat-icon> view logs
+                    </button>
+                    <button (click)="removeLocker(element)" class="c-red" mat-raised-button>
+                        <mat-icon>remove_circle</mat-icon> delete
+                    </button>
 
                 </td>
             </ng-container>
@@ -156,5 +167,60 @@
         </table>
 
         <mat-paginator [pageSizeOptions]="[20, 50]" showFirstLastButtons></mat-paginator>
+    </div>
+
+
+    <h2>Locker zone</h2>
+
+
+    <div class="table-wrapper">
+        <button mat-raised-button class="add-btn" [routerLink]="['/','dashboard','add-locker-zone']"
+            routerLinkActive="router-link-active">
+            <mat-icon>add</mat-icon>
+            ZONE
+        </button>
+        <table mat-table [dataSource]="dataSource_locker_zone">
+            <!-- Position Column -->
+            <ng-container matColumnDef="1">
+                <th mat-header-cell *matHeaderCellDef> No. </th>
+                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="2">
+                <th mat-header-cell *matHeaderCellDef> Zone </th>
+                <td mat-cell *matCellDef="let element"> {{element.zone_title}} </td>
+            </ng-container>
+
+            <!-- Weight Column -->
+            <ng-container matColumnDef="3">
+                <th mat-header-cell *matHeaderCellDef> Size </th>
+                <td mat-cell *matCellDef="let element"> {{element.locker_size}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="4">
+                <th mat-header-cell *matHeaderCellDef> Number of lockers </th>
+                <td mat-cell *matCellDef="let element"> {{element.num_lockers}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="5">
+                <th mat-header-cell *matHeaderCellDef> Action </th>
+                <td mat-cell *matCellDef="let element">
+                    <button *ngIf="element.isEnable == 1" (click)="disableZone(element)" class="c-red" mat-raised-button>
+                        <mat-icon>pause_circle_outline</mat-icon> disable
+                    </button>
+                    <button *ngIf="element.isEnable == 0" (click)="enableZone(element)" class="c-green" mat-raised-button>
+                        <mat-icon>play_circle_outline</mat-icon> enable
+                    </button>
+                </td>
+                
+                
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns_locker_zone"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns_locker_zone;"></tr>
+        </table>
+
+        <!-- <mat-paginator [pageSizeOptions]="[20, 50]" showFirstLastButtons></mat-paginator> -->
     </div>
 </div>

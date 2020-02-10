@@ -16,7 +16,9 @@ export class LockerComponent implements OnInit {
   lockers_data;
 
   displayedColumns: string[] = ['1', '2', '3', '4', '5', '6', '7', '8'];
+  displayedColumns_locker_zone: string[] = ['1', '2', '3', '4', '5'];
   dataSource;
+  dataSource_locker_zone;
 
   interval_sub;
 
@@ -36,9 +38,11 @@ export class LockerComponent implements OnInit {
 
     this.getActiveLockerData();
     this.getAllLockerData();
+    this.getLockerZoneData();
 
     this.interval_sub = setInterval(() => {
       this.getActiveLockerData();
+      this.getLockerZoneData();
       this.getAllLockerData();
     }, 5000);
 
@@ -66,6 +70,13 @@ export class LockerComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
       this.lockers_data = res;
     });
+  }
+
+  getLockerZoneData() {
+    this._LockerService.getLockerZones().then((zones: any) => {
+      this.dataSource_locker_zone = new MatTableDataSource(zones);
+      // this.dataSource.paginator = this.paginator;
+    })
   }
 
   removeLocker(locker) {
@@ -120,6 +131,41 @@ export class LockerComponent implements OnInit {
           console.log(res);
           this._snackBar.open('Successfully', '', {});
           this.getAllLockerData();
+        });
+      }
+    });
+  }
+
+  disableZone(zone) {
+    console.log(zone);
+    const dialogRef = this.dialog.open(ConfirmPopupComponent, {
+      data: { title: 'Disable zone ' + zone.zone_title, detail: 'Please note that this action will disable all lockers in zone ' + zone.zone_title + '.' }
+    });
+    dialogRef.afterClosed().subscribe(res => {
+      if (res) {
+        this._LockerService.disableZone(zone.id).then(res => {
+          console.log(res);
+          this._snackBar.open('Successfully', '', {});
+          this.getAllLockerData();
+          this.getLockerZoneData();
+        });
+      }
+    });
+  }
+
+  enableZone(zone) {
+    console.log(zone);
+    const dialogRef = this.dialog.open(ConfirmPopupComponent, {
+      data: { title: 'Enable zone ' + zone.zone_title, detail: 'Please note that this action will enable all lockers in zone ' + zone.zone_title + '.' }
+    });
+    dialogRef.afterClosed().subscribe(res => {
+      if (res) {
+        this._LockerService.enableZone(zone.id).then(res => {
+          console.log(res);
+          this._snackBar.open('Successfully', '', {});
+          this.getAllLockerData();
+          this.getLockerZoneData();
+
         });
       }
     });

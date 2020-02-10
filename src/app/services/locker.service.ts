@@ -23,13 +23,13 @@ export class LockerService {
 
   activateLockerByRfid(rfid) {
     return this.http.get(this.api_url + 'getLockerSizeOptions', {
-      params : {
+      params: {
         rfid: rfid
       }
     }).toPromise();
   }
 
-  changeLocker (rfid, locker_id) {
+  changeLocker(rfid, locker_id) {
     return this.http.get(this.api_url + 'changeLocker', {
       params: {
         rfid: rfid,
@@ -38,7 +38,7 @@ export class LockerService {
     }).toPromise();
   }
 
-  getLogsByLockerID (locker_id) {
+  getLogsByLockerID(locker_id) {
     return this.http.get(this.api_url + 'getLogsByLockerID', {
       params: {
         locker_id: locker_id
@@ -46,7 +46,7 @@ export class LockerService {
     }).toPromise();
   }
 
-  getLockerByID (locker_id) {
+  getLockerByID(locker_id) {
     return this.http.get(this.api_url + 'getLockerByID', {
       params: {
         locker_id: locker_id
@@ -54,7 +54,7 @@ export class LockerService {
     }).toPromise();
   }
 
-  add (zone_id, title) {
+  add(zone_id, title) {
     return this.http.get(this.api_url + 'add', {
       params: {
         zone_id: zone_id,
@@ -63,26 +63,51 @@ export class LockerService {
     }).toPromise();
   }
 
-  remove (id) {
+  remove(id) {
     return this.http.get(this.api_url + 'remove', {
       params: {
-        id:id
+        id: id
       }
     }).toPromise();
   }
 
-  disable (id) {
+  disable(id) {
     return this.http.get(this.api_url + 'disable', {
       params: {
-        id:id
+        id: id
       }
     }).toPromise();
   }
 
-  enable (id) {
+  enable(id) {
     return this.http.get(this.api_url + 'enable', {
       params: {
-        id:id
+        id: id
+      }
+    }).toPromise();
+  }
+
+  addZone(title, size) {
+    return this.http.get(this.api_url + 'addLockerZone', {
+      params: {
+        zone_title: title,
+        locker_size: size
+      }
+    }).toPromise();
+  }
+
+  disableZone(id) {
+    return this.http.get(this.api_url + 'disableZone', {
+      params: {
+        id: id
+      }
+    }).toPromise();
+  }
+
+  enableZone(id) {
+    return this.http.get(this.api_url + 'enableZone', {
+      params: {
+        id: id
       }
     }).toPromise();
   }

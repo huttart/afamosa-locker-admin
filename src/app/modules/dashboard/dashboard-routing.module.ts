@@ -27,6 +27,10 @@ const routes: Routes = [
         loadChildren: './modules/add-locker/add-locker.module#AddLockerModule'
       },
       {
+        path:'add-locker-zone',
+        loadChildren: './modules/add-locker-zone/add-locker-zone.module#AddLockerZoneModule'
+      },
+      {
         path:'locker/:lockerID',
         loadChildren: './modules/locker-detail/locker-detail.module#LockerDetailModule'
       }
