@@ -15,7 +15,7 @@ export class LockerComponent implements OnInit {
   active_lockers;
   lockers_data;
 
-  displayedColumns: string[] = ['1', '2', '3', '4', '5', '6', '7', '8'];
+  displayedColumns: string[] = ['1', '2', '3', '4', '5', '6', '7', '8', '9','10'];
   displayedColumns_locker_zone: string[] = ['1', '2', '3', '4', '5'];
   dataSource;
   dataSource_locker_zone;

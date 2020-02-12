@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit {
 
           var rfid = dialog_data;
 
-          this._UserService.register(dialog_data.rfid, dialog_data.locker_size).then( (res:any) => {
+          this._UserService.register(dialog_data.rfid, dialog_data.locker_size, dialog_data.isHigh).then( (res:any) => {
             console.log(res);
             if (res.status) {
               this._snackBar.open(res.message, '', {

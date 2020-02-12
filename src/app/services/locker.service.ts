@@ -54,11 +54,14 @@ export class LockerService {
     }).toPromise();
   }
 
-  add(zone_id, title) {
+  add(zone_id, title, locker_ids, locker_box, isHigh) {
     return this.http.get(this.api_url + 'add', {
       params: {
         zone_id: zone_id,
-        title: title
+        title: title,
+        locker_ids: locker_ids,
+        locker_box: locker_box,
+        isHigh: isHigh
       }
     }).toPromise();
   }

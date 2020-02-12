@@ -28,6 +28,25 @@
                 </mat-select>
             </mat-form-field>
 
+            <mat-form-field>
+                <input required matInput placeholder="Locker ids" [(ngModel)]="locker_ids" autocomplete="off">
+            </mat-form-field>
+
+            <mat-form-field>
+                <input required matInput placeholder="Locker box" [(ngModel)]="locker_box" autocomplete="off">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-select required placeholder="Locker height" [(ngModel)]="isHigh">
+                    <mat-option value="1">
+                        High
+                    </mat-option>
+                    <mat-option value="0">
+                        Low
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
             <mat-form-field class="example-full-width">
                 <input disabled matInput placeholder="Locker size" [value]="selected_zone.locker_size"> 
             </mat-form-field>

@@ -90,14 +90,16 @@ export class ElectronService {
     // var icdev = this.rf_lib.rf_init(path, '9600');
 
     // return { icdev: icdev, lib: this.rf_lib };
-    this.ipcRenderer.send('message-from-main-renderer', {
-      command: 'start_reading_rfid',
-      payload: { start_reading_rfid: true }
-    });
+    if (this.isElectron()) {
+      this.ipcRenderer.send('message-from-main-renderer', {
+        command: 'start_reading_rfid',
+        payload: { start_reading_rfid: true }
+      });
+    }
   }
 
   readRfidDataFromWorkerService() {
-    
+
   }
 
   getAppVersion() {

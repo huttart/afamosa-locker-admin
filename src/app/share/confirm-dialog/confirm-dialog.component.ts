@@ -18,6 +18,7 @@ export class ConfirmDialogComponent implements OnInit {
   is_can_confirm = false;
   is_can_checkout = false;
   locker_size;
+  isHigh;
   locker_size_options;
   user_locker_data;
 
@@ -99,6 +100,7 @@ export class ConfirmDialogComponent implements OnInit {
   readDataFromRfidReader() {
     this.interval_sub2 = setInterval(() => {
       var rfid_data = this._ElectronService.rfid_data;
+      // rfid_data = 'llll';
       if (rfid_data) {
         this.RFID = rfid_data;
         this._ElectronService.rfid_data = null;
@@ -141,7 +143,7 @@ export class ConfirmDialogComponent implements OnInit {
   }
 
   onYesClick(): void {
-    if (!this.locker_size) {
+    if (!this.locker_size || !this.isHigh) {
       this._snackBar.open('Please select a locker size.', '', {
         panelClass: 'error'
       });
@@ -152,6 +154,7 @@ export class ConfirmDialogComponent implements OnInit {
     this.dialogRef.close({
       rfid: this.RFID,
       locker_size: this.locker_size,
+      isHigh: this.isHigh,
       status: true
     });
   }

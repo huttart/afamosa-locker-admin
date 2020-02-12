@@ -13,11 +13,12 @@ export class UserService {
     private router: Router,
   ) { }
 
-  register(rfid, locker_size) {
+  register(rfid, locker_size, isHigh) {
     return this.http.get(this.api_url + 'register', {
       params: {
         rfid: rfid,
-        locker_size: locker_size
+        locker_size: locker_size,
+        isHigh:isHigh
       }
     }).toPromise();
   }

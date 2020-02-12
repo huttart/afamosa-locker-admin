@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { StaticsService } from 'src/app/services/statics.service';
 import { DateTimeService } from 'src/app/services/date-time.service';
-
+import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -13,6 +14,7 @@ export class UserComponent implements OnInit {
   user_report_active_filter;
   user_report_filter_options;
   today;
+  api_url = environment.api_url;
   columnNames = ['Day','Number of User',{type:'string',role:'tooltip'}];
   options = {
     title: 'Number of users by day',
@@ -29,7 +31,8 @@ export class UserComponent implements OnInit {
 
   constructor(
     private _StaticsService: StaticsService,
-    private _DateTimeService: DateTimeService
+    private _DateTimeService: DateTimeService,
+    private router: Router
   ) { 
     this.today = new Date();
     var current_month = this.today.getMonth() + 1 ;
@@ -76,6 +79,13 @@ export class UserComponent implements OnInit {
       this.user_report_data = report_data;
     });
 
+  }
+
+  export () {
+    var selected_month = this.today.getFullYear() + '-' + this.user_report_active_filter.value + '-01';
+    console.log(selected_month);
+
+    window.open(this.api_url + 'statics/exportUserByDay?date_range=' + selected_month, "_blank");
   }
 
 }
