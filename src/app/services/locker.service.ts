@@ -38,10 +38,21 @@ export class LockerService {
     }).toPromise();
   }
 
-  getLogsByLockerID(locker_id) {
+  getLogsByLockerID(locker_id, start, end) {
     return this.http.get(this.api_url + 'getLogsByLockerID', {
       params: {
-        locker_id: locker_id
+        locker_id: locker_id,
+        start: start,
+        end:end
+      }
+    }).toPromise();
+  }
+
+  getLogsByUserIDAndLockerID (locker_id, user_id) {
+    return this.http.get(this.api_url + 'getLogsByUserIDAndLockerID', {
+      params: {
+        locker_id: locker_id,
+        user_id: user_id,
       }
     }).toPromise();
   }

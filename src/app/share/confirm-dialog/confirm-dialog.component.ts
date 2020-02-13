@@ -100,7 +100,7 @@ export class ConfirmDialogComponent implements OnInit {
   readDataFromRfidReader() {
     this.interval_sub2 = setInterval(() => {
       var rfid_data = this._ElectronService.rfid_data;
-      // rfid_data = 'llll';
+      // rfid_data = '123';
       if (rfid_data) {
         this.RFID = rfid_data;
         this._ElectronService.rfid_data = null;

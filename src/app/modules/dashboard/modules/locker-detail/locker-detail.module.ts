@@ -8,6 +8,10 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { DatePipeModule } from '../../../../pipes/date-pipe/date-pipe.module';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material';
 @NgModule({
   declarations: [LockerDetailComponent],
   imports: [
@@ -17,7 +21,13 @@ import { DatePipeModule } from '../../../../pipes/date-pipe/date-pipe.module';
     MatPaginatorModule,
     MatButtonModule,
     MatIconModule,
-    DatePipeModule
+    DatePipeModule,
+    MatDatepickerModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatNativeDateModule
+  ],
+  providers: [
   ]
 })
 export class LockerDetailModule { }

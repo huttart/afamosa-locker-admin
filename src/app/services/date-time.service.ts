@@ -18,10 +18,25 @@ export class DateTimeService {
     'Nov',
     'Dec',
   ];
+
+  eng_long_month = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ];
   constructor() { }
 
 
   getShortMonthByMonthNumber (month_num) {
-    return this.eng_short_month[month_num];
+    return this.eng_long_month[month_num];
   }
 }

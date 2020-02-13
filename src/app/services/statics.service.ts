@@ -33,6 +33,14 @@ export class StaticsService {
     }).toPromise();
   }
 
+  getUsersCheckedOutByLockerSize (range) {
+    return this.http.get(this.api_url + 'getUsersCheckedOutByLockerSize', {
+      params: {
+        date_range: range
+      }
+    }).toPromise();
+  }
+
   getUsersByLang(range) {
     return this.http.get(this.api_url + 'getUsersByLang', {
       params: {

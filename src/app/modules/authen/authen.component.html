@@ -1,0 +1,48 @@
+<div class="login-container">
+
+    <div class="row">
+        <img src="assets/afamosa-logo.png" alt="logo" class="img-responsive">
+    </div>
+
+    <div class="row">
+        <!-- <h2 class="text-center">SIGN IN</h2> -->
+        <!-- <h2 class="text-center">ลงชื่อเข้าใช้งาน</h2> -->
+    </div>
+
+    <div class="row input-wrapper">
+
+        <form (ngSubmit)="login()" #loginForm="ngForm">
+            <mat-form-field appearance="outline">
+                <mat-label>Username</mat-label>
+                <input matInput placeholder="" [(ngModel)]="username" name="username" required autocomplete="off">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Password</mat-label>
+                <input matInput placeholder="" [(ngModel)]="password" name="password" type="password" required autocomplete="off">
+            </mat-form-field>
+
+            <input type="submit" value="Submit" style="display: none">
+        </form>
+
+    </div>
+
+
+    <div class="row action-wrapper">
+        <!-- <button mat-button>
+            สร้างบัญชี
+        </button> -->
+
+        <span class="fill-space"></span>
+
+        <button  mat-button (click)="login()">
+            SIGN IN
+        </button>
+
+        <button  mat-button [routerLink]="['/home']" routerLinkActive="router-link-active" >
+            Back to home
+        </button>
+
+    </div>
+
+</div>

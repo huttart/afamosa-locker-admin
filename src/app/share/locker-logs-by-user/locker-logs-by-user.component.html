@@ -1,0 +1,56 @@
+<div class="wrapper">
+    <div class="title">
+        <mat-icon>
+            timeline
+        </mat-icon>
+        <h3>{{data.data.title}} logs</h3>
+
+        <span class="fill-space"></span>
+
+        <span class="option">
+            <ng-container *ngIf="data.data.status == 0; else open;">
+                close
+            </ng-container>
+            <ng-template #open>
+                opening
+            </ng-template>
+        </span>
+
+        <span class="option">
+            being used by {{data.data.user_id}}
+        </span>
+
+        <span class="option">
+            {{data.data.locker_size}}
+        </span>
+
+        <button mat-mini-fab (click)="close()"><mat-icon>close</mat-icon></button>
+    </div>
+
+    <div class="content">
+        <div class="log-wrp">
+            <ng-container *ngFor="let item of logs_data">
+                <div class="log">
+                    <div class="who">
+                        <mat-icon>
+                            account_circle
+                        </mat-icon>
+
+                        <span>{{item.user_id}}</span>
+                        <span class="fill"></span>
+
+                        <div class="when">
+                            {{item.timestamp | datePipe}}
+                        </div>
+                    </div>
+                    <div class="what">
+                        {{item.detail}}
+                    </div>
+                    <div class="what" *ngIf="item.url">
+                        <img [src]="item.url" alt="" class="img-responsive">
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</div>

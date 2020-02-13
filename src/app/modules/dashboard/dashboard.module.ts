@@ -12,6 +12,10 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { GoogleChartsModule } from 'angular-google-charts';
 
+import { MatDialogModule } from '@angular/material/dialog';
+import { ConfirmPopupModule } from 'src/app/share/confirm-popup/confirm-popup.module';
+import { ConfirmPopupComponent } from 'src/app/share/confirm-popup/confirm-popup.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [DashboardComponent, MainComponent],
@@ -23,7 +27,13 @@ import { GoogleChartsModule } from 'angular-google-charts';
     MatButtonModule,
     MatIconModule,
     MatProgressSpinnerModule,
-    GoogleChartsModule
+    GoogleChartsModule,
+    ConfirmPopupModule,
+    MatDialogModule,
+    MatSnackBarModule
+  ],
+  entryComponents: [
+    ConfirmPopupComponent
   ]
 })
 export class DashboardModule { }

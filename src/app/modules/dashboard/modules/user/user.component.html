@@ -42,6 +42,50 @@
         </div>
     </div>
 
+    <h2>Today report</h2>
+
+    <div class="row">
+        <div class="active-device ubls">
+            <h3>
+                <mat-icon>trending_up</mat-icon>    
+                Sale</h3>
+
+            <div class="active-device-detail" >
+                <mat-spinner *ngIf="!sell_by_size" strokeWidth="3.8" diameter='40'></mat-spinner>
+                <ng-container *ngIf="sell_by_size">
+
+                    <div class="locker-size" *ngFor="let item of sell_by_size">
+                        <span>{{item.locker_size}}</span>
+                        <span>{{item.count}}</span>
+                    </div>
+
+                </ng-container>
+
+            </div>
+
+        </div>
+
+        <div class="active-device ubls">
+            <h3>
+                <mat-icon>transit_enterexit</mat-icon>    
+                Checkout</h3>
+
+            <div class="active-device-detail">
+                <mat-spinner *ngIf="!checkout_by_size" strokeWidth="3.8" diameter='40'></mat-spinner>
+                <ng-container *ngIf="checkout_by_size">
+
+                    <div class="locker-size" *ngFor="let item of checkout_by_size">
+                        <span>{{item.locker_size}}</span>
+                        <span>{{item.count}}</span>
+                    </div>
+
+                </ng-container>
+
+            </div>
+           
+        </div>
+    </div>
+
     <h2>User report</h2>
 
     <div class="row">

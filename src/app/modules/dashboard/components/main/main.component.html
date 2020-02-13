@@ -3,7 +3,7 @@
         <mat-icon>
             arrow_back</mat-icon>
     </button>
-    <span class="active" >Dashboard</span>
+    <span class="active">Dashboard</span>
 </div>
 <div class="main-content-wrapper">
     <div class="row">
@@ -25,8 +25,16 @@
             </div>
 
             <div class="active-device-action align-right">
+
+                <button (click)="checkoutAllUser()" class="checkout-btn"*ngIf="first_three_card && first_three_card.active_users_right_now > 0" mat-button >
+                    <mat-icon>
+                        transit_enterexit</mat-icon>
+                    Checkout all users </button>
+
                 <button mat-button [routerLink]="['user']">User dashboard <mat-icon>
                         keyboard_arrow_right</mat-icon></button>
+
+               
             </div>
         </div>
 
@@ -51,19 +59,28 @@
             </div>
         </div>
 
-        <div class="active-device">
-            <h3 >
-                <mat-icon>store</mat-icon> 
+        <div class="active-device ubls">
+            <h3>
+                <mat-icon>store</mat-icon>
                 Avalible lockers
             </h3>
 
             <div class="active-device-detail">
-                <span>
+                <!-- <span>
                     <mat-spinner *ngIf="!first_three_card" strokeWidth="3.8" diameter='40'></mat-spinner>
                     <ng-container *ngIf="first_three_card">
                         {{first_three_card.avalible_lockers}}/{{first_three_card.total_lockers}}
                     </ng-container>
-                </span>
+                </span> -->
+                <mat-spinner *ngIf="!first_three_card" strokeWidth="3.8" diameter='40'></mat-spinner>
+                <ng-container *ngIf="first_three_card">
+                    <div class="locker-size" *ngFor="let item of first_three_card.ready_locker_by_size">
+                        <span>{{item.locker_size}}</span>
+                        <span>{{item.num_lockers}}</span>
+                    </div>
+                </ng-container>
+
+
             </div>
 
             <div class="active-device-action align-right">
@@ -74,7 +91,7 @@
 
         <div class="active-device">
             <h3>
-                <mat-icon>people</mat-icon>    
+                <mat-icon>people</mat-icon>
                 Total users
             </h3>
 
@@ -99,8 +116,9 @@
 
         <div class="active-device ubls">
             <h3>
-                <mat-icon>account_circle</mat-icon>    
-                Users by locker size</h3>
+                <mat-icon>account_circle</mat-icon>
+                Users by locker size
+            </h3>
 
             <div class="active-device-detail" [class.active]="range_users_by_locker_active_option">
                 <mat-spinner *ngIf="!users_by_locker" strokeWidth="3.8" diameter='40'></mat-spinner>

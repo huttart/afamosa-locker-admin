@@ -16,6 +16,16 @@
             </mat-icon>
 
             Usage data
+
+            <span class="fill">
+
+            </span>
+
+            <mat-form-field>
+                <input matInput [matDatepicker]="picker" placeholder="Choose a date"  (dateChange)="onDateChange('change', $event)">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
         </div>
         <div class="log-wrp">
             <ng-container *ngFor="let item of logs">
@@ -128,11 +138,11 @@
                 <div class="card-content">
                     <h1>
                         <ng-container *ngIf="locker.can_use == 1">
-                            <span >Available</span>
+                            <span>Available</span>
                         </ng-container>
                         <ng-container *ngIf="locker.can_use == 0">
                             <span>Disabled</span>
-                        </ng-container>    
+                        </ng-container>
                     </h1>
                 </div>
             </div>

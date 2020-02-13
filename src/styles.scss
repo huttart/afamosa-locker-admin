@@ -30,6 +30,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;background-c
 }
 
 
+.cdk-overlay-pane.logs .mat-dialog-container {
+    border-radius: 65px;
+    padding: 0;    
+}
 
 .bread-crumb {
     padding: 5px 15px;

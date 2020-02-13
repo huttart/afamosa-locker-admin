@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { StaticsService } from 'src/app/services/statics.service';
 import { LockerService } from 'src/app/services/locker.service';
+import { MatDialog, MatSnackBar } from '@angular/material';
+import { ConfirmPopupComponent } from 'src/app/share/confirm-popup/confirm-popup.component';
+import { UserService } from 'src/app/services/user.service';
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -40,7 +43,12 @@ export class MainComponent implements OnInit {
 
   constructor(
     private _StaticsService: StaticsService,
-    private _LockerService: LockerService
+    private _LockerService: LockerService,
+    public dialog: MatDialog,
+    private _UserService: UserService,
+    private _snackBar: MatSnackBar,
+
+
   ) { }
 
   ngOnInit() {
@@ -112,6 +120,34 @@ export class MainComponent implements OnInit {
       setTimeout(() => {
         this.user_by_lang = res;
       }, rand_timeout);
+    });
+  }
+
+  checkoutAllUser () {
+    const dialogRef = this.dialog.open(ConfirmPopupComponent, {
+      data: { title: 'Checkout all users', detail: '' }
+    });
+    dialogRef.afterClosed().subscribe(res => {
+      console.log(res);
+      if (res) {
+
+        console.log(this.first_three_card.active_user_arr);
+        // this._LockerService.remove(locker.id).then(res => {
+        //   console.log(res);
+        //   this._snackBar.open('Successfully', '', {});
+        //   this.getAllLockerData();
+        // });
+        this.first_three_card.active_user_arr.forEach(element => {
+          this._UserService.checkout(element.rfid, element.locker_id);
+        });
+
+        this._snackBar.open('Successfully', '', {});
+
+        setTimeout(() => {
+          this.myInit();
+          
+        }, 1000);
+      }
     });
   }
 

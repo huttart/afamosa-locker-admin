@@ -25,6 +25,12 @@
                 <span class="option">
                     {{item.locker_size}}
                 </span>
+
+                <button mat-icon-button (click)="viewLockerLogs(item)">
+                    <mat-icon>
+                        timeline
+                    </mat-icon>
+                </button>
             </h3>
 
             <div class="active-device-detail">

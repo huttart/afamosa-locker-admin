@@ -6,6 +6,9 @@ import { ConfirmPopupComponent } from 'src/app/share/confirm-popup/confirm-popup
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { LockerService } from 'src/app/services/locker.service';
 import { MatSnackBar } from '@angular/material';
+import { LockerLogsByUserModule } from 'src/app/share/locker-logs-by-user/locker-logs-by-user.module';
+import { LockerLogsByUserComponent } from 'src/app/share/locker-logs-by-user/locker-logs-by-user.component';
+
 @Component({
   selector: 'app-locker',
   templateUrl: './locker.component.html',
@@ -151,6 +154,17 @@ export class LockerComponent implements OnInit {
         });
       }
     });
+  }
+
+  viewLockerLogs (data) {
+
+    const dialogRef = this.dialog.open(LockerLogsByUserComponent, {
+      data: { title: '', data: data},
+      panelClass: 'logs',
+      autoFocus: false
+
+    });
+
   }
 
   enableZone(zone) {

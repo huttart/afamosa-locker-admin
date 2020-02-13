@@ -11,7 +11,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ConfirmPopupModule } from 'src/app/share/confirm-popup/confirm-popup.module';
 import { ConfirmPopupComponent } from 'src/app/share/confirm-popup/confirm-popup.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-
+import { LockerLogsByUserComponent } from 'src/app/share/locker-logs-by-user/locker-logs-by-user.component';
+import { LockerLogsByUserModule } from 'src/app/share/locker-logs-by-user/locker-logs-by-user.module';
 @NgModule({
   declarations: [LockerComponent],
   imports: [
@@ -23,10 +24,12 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatIconModule,
     ConfirmPopupModule,
     MatDialogModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    LockerLogsByUserModule
   ],
   entryComponents: [
-    ConfirmPopupComponent
+    ConfirmPopupComponent,
+    LockerLogsByUserComponent
   ]
 })
 export class LockerModule { }
