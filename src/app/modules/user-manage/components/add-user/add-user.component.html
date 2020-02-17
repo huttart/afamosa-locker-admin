@@ -1,0 +1,62 @@
+<div class="bread-crumb">
+    <button mat-icon-button [routerLink]="['/user-manage']">
+        <mat-icon>
+            arrow_back</mat-icon>
+    </button>
+    <span [routerLink]="['/user-manage']" routerLinkActive="router-link-active">User Management</span>
+    <span class="active">Add User</span>
+</div>
+
+<div class="wrapper">
+    <div class="form">
+        <div class="title">
+            Add User Form
+        </div>
+
+        <div class="form-content">
+            <mat-form-field class="example-full-width">
+                <input required matInput placeholder="First Name" [(ngModel)]="f_name" autocomplete="new-password">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <input required matInput placeholder="Last Name" [(ngModel)]="l_name" autocomplete="off">
+            </mat-form-field>
+
+            <mat-form-field>
+                <input required matInput placeholder="Username" [(ngModel)]="username" autocomplete="off">
+            </mat-form-field>
+
+            <mat-form-field>
+                <input type="password" required matInput placeholder="Password" [(ngModel)]="password"
+                    autocomplete="new-password">
+            </mat-form-field>
+
+            <mat-form-field>
+                <input type="password" required matInput placeholder="Confirm Password" [(ngModel)]="cpassword"
+                    autocomplete="new-password">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-select required placeholder="Role" [(ngModel)]="role">
+                    <mat-option value="Admin">
+                        Admin
+                    </mat-option>
+                    <mat-option value="Manager">
+                        Manager
+                    </mat-option>
+                    <mat-option value="Cashier">
+                        Cashier
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+        </div>
+
+        <div class="action">
+            <button mat-raised-button (click)="save()">
+                SAVE
+            </button>
+        </div>
+
+    </div>
+</div>

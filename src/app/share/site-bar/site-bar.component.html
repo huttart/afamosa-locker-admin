@@ -10,13 +10,21 @@
         Dashboard
     </button>
 
+    <button mat-button [routerLink]="['/user-manage']" routerLinkActive="router-link-active" >
+        User Manage
+    </button>
+
     <span class="fill">
 
     </span>
 
     <ng-container *ngIf="user_data.id">
         <button mat-button class="g">
-            Logged in as Admin
+            Logged in as {{user_data.role}}
+        </button>
+
+        <button mat-button >
+            {{user_data.username}}
         </button>
     
         <button mat-button (click)="logout()">

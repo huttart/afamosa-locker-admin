@@ -1,0 +1,68 @@
+
+:host {
+    width: 100%;
+}
+
+.table-wrapper {
+    margin: 35px;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
+    background-color: white;
+    overflow: hidden;
+
+    border-radius: 50px;
+    padding: 15px;
+    position: relative;
+    .add-btn {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        color: #00a850;
+    }
+
+    table.mat-table {
+        width: 100%;
+    }
+
+    td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type, th.mat-header-cell:first-of-type {
+        padding-top: 25px;
+    }
+
+    tr.mat-footer-row, tr.mat-row {
+        height: 70px;
+    }  
+    td.mat-cell:last-of-type, td.mat-footer-cell:last-of-type, th.mat-header-cell:last-of-type {
+        padding-top: 14px;
+    }
+
+    span.active-status {
+        background-color: #00a850;
+        color: white;
+    }
+
+    span.using {
+        background-color: #FFC107;
+        color: white;
+    }
+
+    span.open {
+        color: #00a850;
+    }
+
+    span {
+        padding: 12px;
+        display: inline-block;
+        border-radius: 50px;
+        background-color: whitesmoke;
+    }
+
+    button {
+        margin-right: 8px;
+        padding: 2px 12px;
+        background: whitesmoke;
+        border-radius: 50px;
+    }
+}
+
+.c-red {
+    color: red;
+}

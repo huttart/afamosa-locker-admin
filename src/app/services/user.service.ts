@@ -40,5 +40,14 @@ export class UserService {
     }).toPromise();
   }
 
+  getUsers (start, end) {
+    return this.http.get(this.api_url + 'getUsers', {
+      params: {
+        start: start,
+        end:end
+      }
+    }).toPromise();
+  }
+
 
 }

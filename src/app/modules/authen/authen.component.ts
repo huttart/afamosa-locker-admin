@@ -18,6 +18,11 @@ export class AuthenComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
+    setTimeout(() => {
+      this.username = '';
+      this.password = '';
+    }, 700);
   }
 
   login() {
@@ -25,14 +30,20 @@ export class AuthenComponent implements OnInit {
     console.log(this.username);
     console.log(this.password);
 
+
+
     if (this.username && this.password) {
       this._AuthService.login(this.username, this.password).then((res:any) => {
         if (res.status) {
           this._snackBar.open('Successfully logged in', '', {
           });
-          this._AuthService.user_data = {
-            id: 'Logged in'
-          };
+          console.log(res);
+          this._AuthService.user_data.id = res.data.id;
+          this._AuthService.user_data.role = res.data.role;
+          this._AuthService.user_data['username'] = res.data.username;
+          this._AuthService.user_data['f_name'] = res.data.f_name;
+          this._AuthService.user_data['l_name'] = res.data.l_name;
+
           this.router.navigate(['/dashboard']);
 
         } else {

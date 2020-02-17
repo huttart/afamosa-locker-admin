@@ -67,6 +67,9 @@
             <mat-icon>add</mat-icon>
             LOCKER
         </button>
+        <mat-form-field>
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter locker" autocomplete="off">
+        </mat-form-field>
         <table mat-table [dataSource]="dataSource">
             <!-- Position Column -->
             <ng-container matColumnDef="1">

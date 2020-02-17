@@ -1,0 +1,43 @@
+.wrapper {
+    padding-top: 140px;
+    display: flex;
+    justify-content: center;
+}
+.form {
+        width: 450px;
+        min-height: 600px;
+        box-shadow: 0 1px 3px 0 rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 2px 1px -1px rgba(0,0,0,.12);
+        background-color: white;
+        padding: 25px;
+        border-radius: 40px;
+        margin: 20px;
+
+        .title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+
+            font-size: 26px;
+            font-weight: bold;
+
+            .mat-icon {
+                margin-right: 10px;
+            }
+        }
+
+        .mat-form-field {
+            width: 100%;
+        }
+
+        .action {
+            padding: 20px 0;
+            text-align: right;
+
+            button {
+                padding: 10px 40px;
+                background-color: #00a850;
+                border-radius: 50px;
+                color: white;
+            }
+        }
+}

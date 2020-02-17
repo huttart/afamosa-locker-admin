@@ -25,6 +25,8 @@ export class LockerComponent implements OnInit {
 
   interval_sub;
 
+  current_filter;
+
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
 
@@ -61,17 +63,18 @@ export class LockerComponent implements OnInit {
 
   getActiveLockerData() {
     this._StaticsService.getActiveLockerData().then((res: any) => {
-      console.log(res);
       this.active_lockers = res;
     });
   }
 
   getAllLockerData() {
     this._StaticsService.getAllLockerData().then((res: any) => {
-      console.log(res);
       this.dataSource = new MatTableDataSource(res);
       this.dataSource.paginator = this.paginator;
       this.lockers_data = res;
+      if (this.current_filter) {
+        this.applyFilter(this.current_filter);
+      }
     });
   }
 
@@ -83,7 +86,6 @@ export class LockerComponent implements OnInit {
   }
 
   removeLocker(locker) {
-    console.log(locker);
     if (locker.active == 1) {
       this._snackBar.open('Can not remove the locker, being used.', '', {
         panelClass: 'error'
@@ -94,10 +96,8 @@ export class LockerComponent implements OnInit {
       data: { title: 'Remove locker ' + locker.title, detail: '' }
     });
     dialogRef.afterClosed().subscribe(res => {
-      console.log(res);
       if (res) {
         this._LockerService.remove(locker.id).then(res => {
-          console.log(res);
           this._snackBar.open('Successfully', '', {});
           this.getAllLockerData();
         });
@@ -106,15 +106,12 @@ export class LockerComponent implements OnInit {
   }
 
   disableLocker(locker) {
-    console.log(locker);
     const dialogRef = this.dialog.open(ConfirmPopupComponent, {
       data: { title: 'Disable locker ' + locker.title, detail: '' }
     });
     dialogRef.afterClosed().subscribe(res => {
-      console.log(res);
       if (res) {
         this._LockerService.disable(locker.id).then(res => {
-          console.log(res);
           this._snackBar.open('Successfully', '', {});
           this.getAllLockerData();
         });
@@ -123,15 +120,12 @@ export class LockerComponent implements OnInit {
   }
 
   enableLocker(locker) {
-    console.log(locker);
     const dialogRef = this.dialog.open(ConfirmPopupComponent, {
       data: { title: 'Enable locker ' + locker.title, detail: '' }
     });
     dialogRef.afterClosed().subscribe(res => {
-      console.log(res);
       if (res) {
         this._LockerService.enable(locker.id).then(res => {
-          console.log(res);
           this._snackBar.open('Successfully', '', {});
           this.getAllLockerData();
         });
@@ -140,14 +134,12 @@ export class LockerComponent implements OnInit {
   }
 
   disableZone(zone) {
-    console.log(zone);
     const dialogRef = this.dialog.open(ConfirmPopupComponent, {
       data: { title: 'Disable zone ' + zone.zone_title, detail: 'Please note that this action will disable all lockers in zone ' + zone.zone_title + '.' }
     });
     dialogRef.afterClosed().subscribe(res => {
       if (res) {
         this._LockerService.disableZone(zone.id).then(res => {
-          console.log(res);
           this._snackBar.open('Successfully', '', {});
           this.getAllLockerData();
           this.getLockerZoneData();
@@ -157,32 +149,32 @@ export class LockerComponent implements OnInit {
   }
 
   viewLockerLogs (data) {
-
     const dialogRef = this.dialog.open(LockerLogsByUserComponent, {
       data: { title: '', data: data},
       panelClass: 'logs',
       autoFocus: false
-
     });
-
   }
 
   enableZone(zone) {
-    console.log(zone);
     const dialogRef = this.dialog.open(ConfirmPopupComponent, {
       data: { title: 'Enable zone ' + zone.zone_title, detail: 'Please note that this action will enable all lockers in zone ' + zone.zone_title + '.' }
     });
     dialogRef.afterClosed().subscribe(res => {
       if (res) {
         this._LockerService.enableZone(zone.id).then(res => {
-          console.log(res);
           this._snackBar.open('Successfully', '', {});
           this.getAllLockerData();
           this.getLockerZoneData();
-
         });
       }
     });
+  }
+
+  applyFilter(filterValue: string) {
+    console.log(filterValue);
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.current_filter = filterValue;
   }
 
 }

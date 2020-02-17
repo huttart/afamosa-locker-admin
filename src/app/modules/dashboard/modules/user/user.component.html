@@ -15,21 +15,14 @@
             <h3>
                 <!-- <mat-icon>account_circle</mat-icon> -->
                 <span>{{item.user_id}}</span>
-                <!-- <img src="assets/lang-{{item.lang}}.png" alt="">  -->
             </h3>
 
             <div class="active-device-detail column">
-                <!-- <h3>locker number</h3> -->
                 <span *ngIf="item.title">
                     {{item.title}}
                 </span>
 
                 <span *ngIf="!item.title" class="msg">Have not opened any locker yet.</span>
-
-                <!-- <h3>registered at</h3> -->
-              
-
-                <!-- <h3>size</h3> -->
                 <span>
                     {{item.locker_size}}
                 </span>
@@ -103,7 +96,7 @@
             </h3>
 
             <div class="active-device-detail">
-                <google-chart type="ColumnChart" [data]="user_report_data" *ngIf="user_report_data && user_report_data.length > 0" [options]="options"
+                <google-chart type="ComboChart" [data]="user_report_data" *ngIf="user_report_data && user_report_data.length > 0" [options]="options"
                     [columnNames]="columnNames">
                 </google-chart>
             </div>
@@ -119,6 +112,12 @@
             </div>
 
         </div>
+    </div>
+
+    <h2>Users</h2>
+
+    <div class="row">
+        <app-user-table></app-user-table>
     </div>
 
 </div>

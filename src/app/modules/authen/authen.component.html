@@ -14,12 +14,12 @@
         <form (ngSubmit)="login()" #loginForm="ngForm">
             <mat-form-field appearance="outline">
                 <mat-label>Username</mat-label>
-                <input matInput placeholder="" [(ngModel)]="username" name="username" required autocomplete="off">
+                <input matInput placeholder="" [(ngModel)]="username" name="username" required autocomplete="new-password">
             </mat-form-field>
 
             <mat-form-field appearance="outline">
                 <mat-label>Password</mat-label>
-                <input matInput placeholder="" [(ngModel)]="password" name="password" type="password" required autocomplete="off">
+                <input matInput placeholder="" [(ngModel)]="password" name="password" type="password" required autocomplete="new-password">
             </mat-form-field>
 
             <input type="submit" value="Submit" style="display: none">

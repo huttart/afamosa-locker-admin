@@ -68,6 +68,11 @@
     border-radius: 50px;
     padding: 15px;
     position: relative;
+
+    .mat-form-field:nth-child(2) {
+        width: calc(100% - 135px);
+        margin-left: 10px;
+    }
     .add-btn {
         position: absolute;
         top: 15px;

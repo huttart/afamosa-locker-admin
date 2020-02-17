@@ -15,7 +15,7 @@ export class UserComponent implements OnInit {
   user_report_filter_options;
   today;
   api_url = environment.api_url;
-  columnNames = ['Day', 'Number of User', { type: 'string', role: 'tooltip' }];
+  columnNames = ['Day', 'Users',{ type: 'string', role: 'tooltip' }, 'Checked out', 'Checked out by Admin'];
   options = {
     title: 'Number of users by day',
     // width: 900,
@@ -27,6 +27,7 @@ export class UserComponent implements OnInit {
     // vAxis: {
     //   gridlines: {color: 'none'},
     // }
+    seriesType: 'bars',
   };
 
   checkout_by_size;
@@ -77,10 +78,12 @@ export class UserComponent implements OnInit {
     this._StaticsService.getUserReport(selected_month).then((res: any) => {
       var report_data = [];
       res.forEach(element => {
+        console.log(element);
         var data_date = new Date(element[0]);
-        report_data.push([data_date, element[1], data_date.toDateString() + ': ' + element[1] + ' users']);
+        var new_date = data_date.toDateString();
+        console.log(new_date);
+        report_data.push([new_date, element[1], data_date.toDateString() + ': ' + element[1] + ' users', element[2], element[3]]);
       });
-
       this.user_report_data = report_data;
     });
 

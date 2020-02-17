@@ -13,6 +13,8 @@ import { ConfirmPopupComponent } from 'src/app/share/confirm-popup/confirm-popup
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { LockerLogsByUserComponent } from 'src/app/share/locker-logs-by-user/locker-logs-by-user.component';
 import { LockerLogsByUserModule } from 'src/app/share/locker-logs-by-user/locker-logs-by-user.module';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 @NgModule({
   declarations: [LockerComponent],
   imports: [
@@ -25,7 +27,9 @@ import { LockerLogsByUserModule } from 'src/app/share/locker-logs-by-user/locker
     ConfirmPopupModule,
     MatDialogModule,
     MatSnackBarModule,
-    LockerLogsByUserModule
+    LockerLogsByUserModule,
+    MatInputModule,
+    MatFormFieldModule
   ],
   entryComponents: [
     ConfirmPopupComponent,

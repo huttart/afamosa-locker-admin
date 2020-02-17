@@ -5,9 +5,10 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class AuthService {
-  api_url = environment.api_url + 'user/';
+  api_url = environment.api_url + 'admin/';
   user_data = {
-    id: ''
+    id: '',
+    role: ''
   };
   constructor(
     private http: HttpClient,
