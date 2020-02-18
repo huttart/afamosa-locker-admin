@@ -44,7 +44,7 @@ export class AuthenComponent implements OnInit {
           this._AuthService.user_data['f_name'] = res.data.f_name;
           this._AuthService.user_data['l_name'] = res.data.l_name;
 
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/home']);
 
         } else {
           this._snackBar.open('No match user.', '', {

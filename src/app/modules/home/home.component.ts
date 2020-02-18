@@ -36,7 +36,8 @@ export class HomeComponent implements OnInit {
           if (res.status) {
             console.log(res);
             const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-              data: { title: 'Selling Confirmation', detail: 'sell', task_id: res.data.task_id, type: 0 }
+              data: { title: 'Selling Confirmation', detail: 'sell', task_id: res.data.task_id, type: 0 },
+              panelClass: 'logs'
             });
 
             dialogRef.afterClosed().subscribe((dialog_data: any) => {
@@ -79,7 +80,8 @@ export class HomeComponent implements OnInit {
       if (res.status) {
         console.log(res);
         const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-          data: { title: 'Change Locker', detail: 'change', task_id: res.data.task_id, type: 0 }
+          data: { title: 'Change Locker', detail: 'change', task_id: res.data.task_id, type: 0 },
+          panelClass: 'logs'
         });
       }
     });
@@ -90,7 +92,9 @@ export class HomeComponent implements OnInit {
       if (res.status) {
         console.log(res);
         const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-          data: { title: 'Checkout Confirmation', detail: 'checkout', task_id: res.data.task_id, type: 0 }
+          data: { title: 'Checkout Confirmation', detail: 'checkout', task_id: res.data.task_id, type: 0 },
+          panelClass: 'logs'
+
         });
 
         dialogRef.afterClosed().subscribe((dialog_data: any) => {

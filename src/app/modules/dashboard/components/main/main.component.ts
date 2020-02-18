@@ -4,6 +4,7 @@ import { LockerService } from 'src/app/services/locker.service';
 import { MatDialog, MatSnackBar } from '@angular/material';
 import { ConfirmPopupComponent } from 'src/app/share/confirm-popup/confirm-popup.component';
 import { UserService } from 'src/app/services/user.service';
+import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -39,6 +40,7 @@ export class MainComponent implements OnInit {
     ['IE', 26.8],
   ];
   options; 
+  user_data;
   
 
   constructor(
@@ -47,12 +49,13 @@ export class MainComponent implements OnInit {
     public dialog: MatDialog,
     private _UserService: UserService,
     private _snackBar: MatSnackBar,
-
+    private _AuthService: AuthService
 
   ) { }
 
   ngOnInit() {
     this.myInit();
+    this.user_data = this._AuthService.user_data;
     this.auto_refresh = setInterval(() => {
       this.myInit();
     }, 20000);
@@ -138,7 +141,7 @@ export class MainComponent implements OnInit {
         //   this.getAllLockerData();
         // });
         this.first_three_card.active_user_arr.forEach(element => {
-          this._UserService.checkout(element.rfid, element.locker_id);
+          this._UserService.checkoutAllUser(element.user_id, element.locker_id);
         });
 
         this._snackBar.open('Successfully', '', {});

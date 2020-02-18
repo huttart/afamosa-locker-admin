@@ -4,7 +4,7 @@
 }
 
 .table-wrapper {
-    margin: 35px;
+    margin: 15px;
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
     background-color: white;
     overflow: hidden;
@@ -23,7 +23,21 @@
         width: 100%;
     }
 
+    div.img {
+        position: relative;
+
+        img {
+            max-width: 70px;
+            position: absolute;
+            top: 0;
+        }
+    }
+
     td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type, th.mat-header-cell:first-of-type {
+        &:nth-child(1) {
+            // padding: 0;
+            padding: 10px;
+        }
         padding-top: 25px;
     }
 
@@ -65,4 +79,15 @@
 
 .c-red {
     color: red;
+}
+.datepicker {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    .mat-form-field {
+        background: whitesmoke;
+        border-radius: 60px;
+        padding: 0px 30px;
+    }
 }

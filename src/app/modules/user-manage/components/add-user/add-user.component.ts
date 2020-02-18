@@ -31,6 +31,7 @@ export class AddUserComponent implements OnInit {
       }); 
       return;
     }
+    console.log('add user');
     this._AdminService.addUser(this.username, this.password, this.role, this.f_name, this.l_name).then( (res:any) => {
       if (res.status) {
         this._snackBar.open('Successfully', '', {}); 

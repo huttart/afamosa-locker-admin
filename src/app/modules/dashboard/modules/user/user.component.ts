@@ -3,6 +3,7 @@ import { StaticsService } from 'src/app/services/statics.service';
 import { DateTimeService } from 'src/app/services/date-time.service';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -14,6 +15,7 @@ export class UserComponent implements OnInit {
   user_report_active_filter;
   user_report_filter_options;
   today;
+  user_data;
   api_url = environment.api_url;
   columnNames = ['Day', 'Users',{ type: 'string', role: 'tooltip' }, 'Checked out', 'Checked out by Admin'];
   options = {
@@ -36,12 +38,13 @@ export class UserComponent implements OnInit {
   constructor(
     private _StaticsService: StaticsService,
     private _DateTimeService: DateTimeService,
-    private router: Router
+    private router: Router,
+    private _AuthService: AuthService
   ) {
     this.today = new Date();
     var current_month = this.today.getMonth() + 1;
     this.user_report_filter_options = [];
-
+    this.user_data = _AuthService.user_data;
     console.log(this.today);
     console.log(this.today.getMonth());
 

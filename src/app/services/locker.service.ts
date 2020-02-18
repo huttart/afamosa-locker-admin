@@ -48,6 +48,24 @@ export class LockerService {
     }).toPromise();
   }
 
+  getMatchLockerForChange (locker_size, isHigh) {
+    return this.http.get(this.api_url + 'getMatchLockerForChange', {
+      params: {
+        locker_size: locker_size,
+        isHigh: isHigh,
+      }
+    }).toPromise();
+  }
+
+  selectLockerForChange (locker_id, user_id) {
+    return this.http.get(this.api_url + 'selectLockerForChange', {
+      params: {
+        locker_id: locker_id,
+        user_id: user_id,
+      }
+    }).toPromise();
+  }
+
   getLogsByUserIDAndLockerID (locker_id, user_id) {
     return this.http.get(this.api_url + 'getLogsByUserIDAndLockerID', {
       params: {

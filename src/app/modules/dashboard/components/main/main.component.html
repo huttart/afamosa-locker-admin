@@ -26,7 +26,7 @@
 
             <div class="active-device-action align-right">
 
-                <button (click)="checkoutAllUser()" class="checkout-btn"*ngIf="first_three_card && first_three_card.active_users_right_now > 0" mat-button >
+                <button (click)="checkoutAllUser()" class="checkout-btn"*ngIf="first_three_card && first_three_card.active_users_right_now > 0 && user_data.role == 'Admin'" mat-button >
                     <mat-icon>
                         transit_enterexit</mat-icon>
                     Checkout all users </button>

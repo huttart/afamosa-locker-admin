@@ -23,7 +23,8 @@ export class ConfirmDialogComponent implements OnInit {
   user_locker_data;
 
   rf_reader;
-
+  changeLockers;
+  selected_locker_change;
   constructor(
     public dialogRef: MatDialogRef<ConfirmDialogComponent>,
     private _TaskService: TaskService,
@@ -50,37 +51,6 @@ export class ConfirmDialogComponent implements OnInit {
     _ElectronService.rfidReaderInit('');
     this.readDataFromRfidReader();
 
-
-    // this.connectToRfidReader();
-
-    // this.interval_sub2 = setInterval(() => {
-    //   _TaskService.getTaskQueueByType(data.type, data.task_id).then((res:any) => {
-    //     if (res.rfid) {
-    //       console.log(res);
-    //       this.RFID = res.rfid;
-    //       clearInterval(this.interval_sub);
-    //       clearInterval(this.interval_sub2);
-    //       if (data.detail == 'checkout' || data.detail == 'change') {
-    //         _UserService.getUserLockerData(this.RFID).then((data:any) => {
-    //           console.log(data);
-    //           this.user_locker_data = data;
-    //           if (data) {
-    //             this.is_can_checkout = true;
-
-    //             if (data.active == 0) {
-    //               this.is_can_checkout = false;
-    //             }
-    //           }
-    //         })
-    //       }
-    //     }
-
-    //     // if (res.rfid) {
-    //     //   this.dialogRef.close(res.rfid);
-    //     // }
-    //   })
-    // }, 500);
-
   }
 
   connectToRfidReader() {
@@ -100,7 +70,7 @@ export class ConfirmDialogComponent implements OnInit {
   readDataFromRfidReader() {
     this.interval_sub2 = setInterval(() => {
       var rfid_data = this._ElectronService.rfid_data;
-      // rfid_data = '123';
+      // rfid_data = '26ed61b100000000';
       if (rfid_data) {
         this.RFID = rfid_data;
         this._ElectronService.rfid_data = null;
@@ -108,18 +78,25 @@ export class ConfirmDialogComponent implements OnInit {
         clearInterval(this.interval_sub);
         if (this.data.detail == 'checkout' || this.data.detail == 'change') {
           this._UserService.getUserLockerData(this.RFID).then((data: any) => {
+            console.log(data);
             this.user_locker_data = data;
             if (data) {
               this.is_can_checkout = true;
-  
+
               if (data.active == 0) {
                 this.is_can_checkout = false;
               }
+
+              this._LockerService.getMatchLockerForChange(data.locker_size, data.isHigh).then((changeLocker: any) => {
+                console.log(changeLocker);
+                this.changeLockers = changeLocker;
+              });
+
             }
           })
         }
       }
-      
+
     }, 200);
   }
 
@@ -160,7 +137,7 @@ export class ConfirmDialogComponent implements OnInit {
   }
 
   onCheckoutClick() {
-    this._UserService.checkout(this.RFID, this.user_locker_data.locker_id).then((res: any) => {
+    this._UserService.checkout(this.user_locker_data.user_id, this.user_locker_data.locker_id).then((res: any) => {
       if (res.status) {
         console.log(res);
         this._snackBar.open(res.message, '', {});
@@ -182,11 +159,17 @@ export class ConfirmDialogComponent implements OnInit {
   }
 
   onChangeClick() {
+    if (!this.selected_locker_change) {
+      this._snackBar.open('Please select locker.', '', {
+        panelClass: 'error'
+      });
+      return;
+    }
     this._LockerService.changeLocker(this.RFID, this.user_locker_data.locker_id).then((res: any) => {
       if (res.status) {
-        console.log(res);
-
-        this._snackBar.open(res.message, '', {});
+        this._LockerService.selectLockerForChange(this.selected_locker_change.id,this.user_locker_data.user_id).then( r => {
+          this._snackBar.open(res.message, '', {});
+        });
       } else {
         this._snackBar.open('An error occurred while changing locker.', '', {
           panelClass: 'error'

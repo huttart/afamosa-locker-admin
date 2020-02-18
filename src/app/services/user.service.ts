@@ -31,10 +31,19 @@ export class UserService {
     }).toPromise();
   }
 
-  checkout(rfid, locker_id) {
+  checkout(user_id, locker_id) {
     return this.http.get(this.api_url + 'checkout', {
       params: {
-        rfid: rfid,
+        user_id: user_id,
+        locker_id: locker_id
+      }
+    }).toPromise();
+  }
+
+  checkoutAllUser(user_id, locker_id) {
+    return this.http.get(this.api_url + 'checkoutAll', {
+      params: {
+        user_id: user_id,
         locker_id: locker_id
       }
     }).toPromise();

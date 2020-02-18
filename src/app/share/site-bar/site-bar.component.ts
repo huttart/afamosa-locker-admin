@@ -20,7 +20,7 @@ export class SiteBarComponent implements OnInit {
 
   logout() {
     this._AuthService.user_data.id = '';
-    this.router.navigate(['/home']);
+    this.router.navigate(['/login']);
   }
 
 }

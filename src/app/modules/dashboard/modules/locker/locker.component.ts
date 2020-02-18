@@ -8,7 +8,7 @@ import { LockerService } from 'src/app/services/locker.service';
 import { MatSnackBar } from '@angular/material';
 import { LockerLogsByUserModule } from 'src/app/share/locker-logs-by-user/locker-logs-by-user.module';
 import { LockerLogsByUserComponent } from 'src/app/share/locker-logs-by-user/locker-logs-by-user.component';
-
+import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-locker',
   templateUrl: './locker.component.html',
@@ -27,6 +27,8 @@ export class LockerComponent implements OnInit {
 
   current_filter;
 
+  user_data;
+
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
 
@@ -35,12 +37,12 @@ export class LockerComponent implements OnInit {
     public dialog: MatDialog,
     private _LockerService: LockerService,
     private _snackBar: MatSnackBar,
-
+    private _AuthService: AuthService
   ) { }
 
   ngOnInit() {
     // this.dataSource.paginator = this.paginator;
-
+    this.user_data = this._AuthService.user_data;
     this.getActiveLockerData();
     this.getAllLockerData();
     this.getLockerZoneData();

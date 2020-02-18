@@ -14,6 +14,11 @@ import { UserTableComponent } from './components/user-table/user-table.component
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatNativeDateModule } from '@angular/material';
+
 @NgModule({
   declarations: [UserComponent, UserTableComponent],
   imports: [
@@ -26,7 +31,11 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     GoogleChartsModule,
     DatePipeModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatDatepickerModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatNativeDateModule
   ]
 })
 export class UserModule { }

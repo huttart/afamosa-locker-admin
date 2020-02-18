@@ -47,6 +47,19 @@
         <ng-container *ngIf="RFID && !is_can_checkout && (data.detail == 'checkout' || data.detail == 'change')">
             RFID : {{RFID}} have not registered yet.
         </ng-container>
+
+        <ng-container *ngIf="data.detail == 'change' && RFID && is_can_checkout && changeLockers">
+            <div class="change-option">
+                <mat-form-field>
+                    <mat-label>Select new locker</mat-label>
+                    <mat-select required [(value)]="selected_locker_change">
+                        <mat-option *ngFor="let item of changeLockers" [value]="item">{{item.title}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </ng-container>
+
     </div>
 
 </div>

@@ -62,8 +62,8 @@
 
 
     <div class="table-wrapper">
-        <button mat-raised-button class="add-btn" [routerLink]="['/','dashboard','add-locker']"
-            routerLinkActive="router-link-active">
+        <button *ngIf="user_data.role == 'Admin'" mat-raised-button class="add-btn"
+            [routerLink]="['/','dashboard','add-locker']" routerLinkActive="router-link-active">
             <mat-icon>add</mat-icon>
             LOCKER
         </button>
@@ -169,12 +169,12 @@
             <ng-container matColumnDef="10">
                 <th mat-header-cell *matHeaderCellDef> Actions </th>
                 <td mat-cell *matCellDef="let element">
-                    <ng-container *ngIf="element.can_use == 1">
+                    <ng-container *ngIf="element.can_use == 1 && user_data.role == 'Admin'">
                         <button mat-raised-button (click)="disableLocker(element)">
                             <mat-icon>pause_circle_outline</mat-icon> disable
                         </button>
                     </ng-container>
-                    <ng-container *ngIf="element.can_use == 0">
+                    <ng-container *ngIf="element.can_use == 0 && user_data.role == 'Admin'">
                         <button mat-raised-button (click)="enableLocker(element)">
                             <mat-icon>play_circle_outline</mat-icon> enable
                         </button>
@@ -184,7 +184,8 @@
                         routerLinkActive="router-link-active">
                         <mat-icon>timeline</mat-icon> view logs
                     </button>
-                    <button (click)="removeLocker(element)" class="c-red" mat-raised-button>
+                    <button *ngIf="user_data.role == 'Admin'" (click)="removeLocker(element)" class="c-red"
+                        mat-raised-button>
                         <mat-icon>remove_circle</mat-icon> delete
                     </button>
 
@@ -203,8 +204,8 @@
 
 
     <div class="table-wrapper">
-        <button mat-raised-button class="add-btn" [routerLink]="['/','dashboard','add-locker-zone']"
-            routerLinkActive="router-link-active">
+        <button *ngIf="user_data.role == 'Admin'" mat-raised-button class="add-btn"
+            [routerLink]="['/','dashboard','add-locker-zone']" routerLinkActive="router-link-active">
             <mat-icon>add</mat-icon>
             ZONE
         </button>
@@ -235,17 +236,17 @@
             <ng-container matColumnDef="5">
                 <th mat-header-cell *matHeaderCellDef> Action </th>
                 <td mat-cell *matCellDef="let element">
-                    <button *ngIf="element.isEnable == 1" (click)="disableZone(element)" class="c-red"
-                        mat-raised-button>
-                        <mat-icon>pause_circle_outline</mat-icon> disable
-                    </button>
-                    <button *ngIf="element.isEnable == 0" (click)="enableZone(element)" class="c-green"
-                        mat-raised-button>
-                        <mat-icon>play_circle_outline</mat-icon> enable
-                    </button>
+                    <ng-container *ngIf="user_data.role == 'Admin'">
+                        <button *ngIf="element.isEnable == 1" (click)="disableZone(element)" class="c-red"
+                            mat-raised-button>
+                            <mat-icon>pause_circle_outline</mat-icon> disable
+                        </button>
+                        <button *ngIf="element.isEnable == 0" (click)="enableZone(element)" class="c-green"
+                            mat-raised-button>
+                            <mat-icon>play_circle_outline</mat-icon> enable
+                        </button>
+                    </ng-container>
                 </td>
-
-
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns_locker_zone"></tr>

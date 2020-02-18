@@ -11,7 +11,7 @@ import { DatePipeModule } from '../../../../pipes/date-pipe/date-pipe.module';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material';
+import { MatNativeDateModule } from '@angular/material';
 @NgModule({
   declarations: [LockerDetailComponent],
   imports: [
