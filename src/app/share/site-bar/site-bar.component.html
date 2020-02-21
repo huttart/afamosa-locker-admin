@@ -10,7 +10,7 @@
         Dashboard
     </button>
 
-    <button mat-button [routerLink]="['/user-manage']" routerLinkActive="router-link-active" >
+    <button mat-button [routerLink]="['/user-manage']" routerLinkActive="router-link-active" *ngIf="user_data.role == 'Admin'" >
         User Manage
     </button>
 

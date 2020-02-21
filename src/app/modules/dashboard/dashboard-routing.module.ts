@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MainComponent } from './components/main/main.component';
 import { DashboardComponent } from './dashboard.component';
+import { ManagerGuard } from 'src/app/helpers/manager.guard';
 const routes: Routes = [
   {
     path: '',
@@ -13,11 +14,13 @@ const routes: Routes = [
       },
       {
         path:'user',
-        loadChildren: './modules/user/user.module#UserModule'
+        loadChildren: './modules/user/user.module#UserModule',
+        canActivateChild: [ManagerGuard]
       },
       {
         path:'locker',
-        loadChildren: './modules/locker/locker.module#LockerModule'
+        loadChildren: './modules/locker/locker.module#LockerModule',
+        canActivateChild: [ManagerGuard]
       },
       {
         path:'add-locker',

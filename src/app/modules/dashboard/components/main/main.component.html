@@ -26,15 +26,18 @@
 
             <div class="active-device-action align-right">
 
-                <button (click)="checkoutAllUser()" class="checkout-btn"*ngIf="first_three_card && first_three_card.active_users_right_now > 0 && user_data.role == 'Admin'" mat-button >
+                <button (click)="checkoutAllUser()" class="checkout-btn"
+                    *ngIf="first_three_card && first_three_card.active_users_right_now > 0 && user_data.role == 'Admin'"
+                    mat-button>
                     <mat-icon>
                         transit_enterexit</mat-icon>
-                    Checkout all users </button>
+                    Checkout all users
+                </button>
 
                 <button mat-button [routerLink]="['user']">User dashboard <mat-icon>
                         keyboard_arrow_right</mat-icon></button>
 
-               
+
             </div>
         </div>
 
@@ -66,21 +69,13 @@
             </h3>
 
             <div class="active-device-detail">
-                <!-- <span>
-                    <mat-spinner *ngIf="!first_three_card" strokeWidth="3.8" diameter='40'></mat-spinner>
-                    <ng-container *ngIf="first_three_card">
-                        {{first_three_card.avalible_lockers}}/{{first_three_card.total_lockers}}
-                    </ng-container>
-                </span> -->
                 <mat-spinner *ngIf="!first_three_card" strokeWidth="3.8" diameter='40'></mat-spinner>
                 <ng-container *ngIf="first_three_card">
-                    <div class="locker-size" *ngFor="let item of first_three_card.ready_locker_by_size">
-                        <span>{{item.locker_size}}</span>
-                        <span>{{item.num_lockers}}</span>
+                    <div class="locker-size" *ngFor="let item of available_locker_by_size">
+                        <span>{{item.size}}</span>
+                        <span>{{item.ready}} / {{item.total}}</span>
                     </div>
                 </ng-container>
-
-
             </div>
 
             <div class="active-device-action align-right">

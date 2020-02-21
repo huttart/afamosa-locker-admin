@@ -14,6 +14,7 @@ export class MainComponent implements OnInit {
   timeout_at_least = 500;
   first_three_card;
   locker_size_options;
+  available_locker_by_size;
 
   range_total_users = 7;
   range_total_users_active_option;
@@ -80,7 +81,24 @@ export class MainComponent implements OnInit {
   }
 
   getStaticsForDashboardFirstThreeCard() {
-    this._StaticsService.getStaticsForDashboardFirstThreeCard().then(res => {
+    this._StaticsService.getStaticsForDashboardFirstThreeCard().then((res:any) => {
+      var tmp = [];
+      res.total_lockers_by_size.forEach(item => {
+        var ready = 0;
+        res.ready_locker_by_size.forEach(available => {
+          if (item.locker_size == available.locker_size) {
+            ready = available.num_lockers;
+          }
+        });
+
+        tmp.push({
+          size: item.locker_size,
+          ready: ready,
+          total: item.nums
+        });
+      });
+
+      this.available_locker_by_size = tmp;
       setTimeout(() => {
         this.first_three_card = res;
       }, this.timeout_at_least + (100 * Math.round(Math.random() * 3) + 1));
